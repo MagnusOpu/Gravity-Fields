@@ -1,0 +1,91 @@
+GRAVITY FIELDS -- ENTRY 001
+	SUMMARY
+		ITEMS
+			GRAVITY MACHINE
+			GRAVITY PIPE
+			GRAVITY FIELD GENERATOR
+			GRAVITY BLOCK
+			GRAVITY STRENGTH STONE
+			GRAVITY DISTANCE STONE
+		NATURAL RESOURCES
+			GRAVITY ORE
+			
+	INFORMATION
+		Adds several machines to the game to generate alternate gravity levels based on user input.
+	
+	ITEM IDEAS
+	
+		GRAVITY MACHINE
+			INTRODUCTION
+				This machine will be the core of the mod, generating gravity essence by consuming gravity ore.
+			RECIPE
+				G I G
+				I B I
+				G I G
+				Where G = Glass
+				Where I = Iron Block
+				Where B = Gravity Block
+			POWERED WITH
+				Gravity Ore
+				
+		GRAVITY PIPE
+			INTRODUCTION
+				Channels generated gravity along pipes to move it from one place to another.
+			RECIPE
+				I G I
+				| | |
+				| | |
+				Where I = Iron Ingot
+				Where G = Gravity Ore
+				Amount Crafted: 6
+
+		GRAVITY BLOCK
+			INTRODUCTION
+				Block constructed out of Gravity Ore. Used in construction of Gravity Machine.
+			RECIPE
+				G G |
+				G G |
+				| | |
+				Where G = Gravity Ore
+				
+		GRAVITY FIELD GENERATOR
+			INTRODUCTION
+				Generated gravitational field with varying degrees of strength and in varying distances dependent on gravity strength stone
+				and gravity distance chip. Defaults to a base strength and/or distance without gravity stones.
+			RECIPE
+				G I G
+				I B I
+				G I G
+				Where G = Glass
+				Where I = Iron Ingot
+				Where B = Gravity Ore
+			POWERED WITH
+				Gravity Essence
+		
+		GRAVITY STRENGTH STONE
+			INTRODUCTION
+				Right clicking opens up a menu that can be used to set the gravity stone's strength. Putting the strength stone into a
+				gravity field generator will then alter the field generator's effective strength to the gravity stone's strength.
+			RECIPE
+				I G |
+				| | |
+				| | |
+				Where G = Gravity Ore
+				Where I = Iron Ingot
+				
+		GRAVITY DISTANCE STONE
+			INTRODUCTION
+				Right clicking opens up a menu that can be used to set the gravity stone's distance. Putting the distance stone into a
+				gravity field generator will then alter the field generator's effective range to the gravity stone's distance.
+			RECIPE
+				C G |
+				| | |
+				| | |
+				Where G = Gravity Ore
+				Where C = Compass
+				
+	NATURAL RESOURCE IDEAS
+
+		GRAVITY ORE
+			INTRODUCTION
+				This ore will be naturally generated in clusters of 2-4, and will drop a single gravity ore upon destruction.
