@@ -1,4 +1,4 @@
-package net.magnusopus.mod_001;
+package net.magnusopus.gravityfields;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -24,15 +24,15 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  * Contact me at zacharydsturtz@gmail.com
  */
 
-@Mod(modid = Mod001.modId, name = Mod001.name, version = Mod001.version, acceptedMinecraftVersions = "[1.10.2]")
-public class Mod001 {
+@Mod(modid = GravityFields.modId, name = GravityFields.name, version = GravityFields.version, acceptedMinecraftVersions = "[1.10.2]")
+public class GravityFields {
 
-    public static final String modId = "mod001";
-    public static final String name = "Mod 001";
+    public static final String modId = "gravity-fields";
+    public static final String name = "Gravity Fields";
     public static final String version = "1.0.0";
 
     @Mod.Instance(modId)
-    public static Mod001 instance;
+    public static GravityFields instance;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
