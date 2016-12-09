@@ -4,6 +4,7 @@ import net.magnusopu.gravityfields.block.ModBlocks;
 import net.magnusopu.gravityfields.client.GravityTab;
 import net.magnusopu.gravityfields.item.ModItems;
 import net.magnusopu.gravityfields.proxy.CommonProxy;
+import net.magnusopu.gravityfields.recipe.ModRecipes;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -49,6 +50,7 @@ public class GravityFields {
         System.out.println(name + " is loading!");
         ModItems.init();
         ModBlocks.init();
+        ModRecipes.init();
     }
 
     @Mod.EventHandler
