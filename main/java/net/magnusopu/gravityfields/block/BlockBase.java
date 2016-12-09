@@ -32,6 +32,7 @@ public class BlockBase extends Block {
         this.name = name;
         setUnlocalizedName(name);
         setRegistryName(name);
+        setCreativeTab(GravityFields.gravityTab);
     }
 
     public void registerItemModel(ItemBlock itemBlock){

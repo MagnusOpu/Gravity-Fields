@@ -1,6 +1,7 @@
 package net.magnusopu.gravityfields;
 
 import net.magnusopu.gravityfields.block.ModBlocks;
+import net.magnusopu.gravityfields.client.GravityTab;
 import net.magnusopu.gravityfields.item.ModItems;
 import net.magnusopu.gravityfields.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
@@ -40,6 +41,8 @@ public class GravityFields {
 
     @Mod.Instance(modId)
     public static GravityFields instance;
+
+    public static final GravityTab gravityTab = new GravityTab();
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){

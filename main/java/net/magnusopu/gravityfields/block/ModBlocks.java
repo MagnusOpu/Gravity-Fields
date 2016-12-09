@@ -2,7 +2,6 @@ package net.magnusopu.gravityfields.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -29,8 +28,8 @@ public class ModBlocks {
     public static BlockOre gravityOreBlock;
 
     public static void init(){
-        gravityBlock = register(new BlockBase(Material.ROCK, "gravityBlock").setCreativeTab(CreativeTabs.BUILDING_BLOCKS));
-        gravityOreBlock = register(new BlockOre("gravityOreBlock").setCreativeTab(CreativeTabs.BUILDING_BLOCKS));
+        gravityBlock = register(new BlockBase(Material.ROCK, "gravityBlock"));
+        gravityOreBlock = register(new BlockOre("gravityOreBlock"));
     }
 
     private static <T extends Block> T register(T block, ItemBlock itemBlock){

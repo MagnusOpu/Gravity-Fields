@@ -1,7 +1,9 @@
-package net.magnusopu.gravityfields.item;
+package net.magnusopu.gravityfields.client;
 
+import net.magnusopu.gravityfields.GravityFields;
+import net.magnusopu.gravityfields.item.ModItems;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Copyright (C) 2016 MagnusOpu.
@@ -20,26 +22,20 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+public class GravityTab extends CreativeTabs {
 
-public final class ModItems {
-
-    public static ItemBase gravityOre;
-    public static ItemGravityStone gravityRangeStone;
-    public static ItemGravityStone gravityStrengthStone;
-
-    public static void init(){
-        gravityOre = register(new ItemBase("gravityOre"));
-        gravityRangeStone = register(new ItemGravityStone("gravityRangeStone"));
-        gravityStrengthStone = register(new ItemGravityStone("gravityStrengthStone"));
+    public GravityTab(){
+        super(GravityFields.modId);
+        setBackgroundImageName("gravityfields.png");
     }
 
+    @Override
+    public Item getTabIconItem() {
+        return ModItems.gravityRangeStone;
+    }
 
-    private static <T extends Item> T register(T item) {
-        GameRegistry.register(item);
-
-        if(item instanceof ItemBase)
-            ((ItemBase)item).registerItemModel();
-
-        return item;
+    @Override
+    public boolean hasSearchBar(){
+        return true;
     }
 }
