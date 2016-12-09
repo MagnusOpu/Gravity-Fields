@@ -22,6 +22,13 @@ import net.minecraft.item.Item;
 
 public class CommonProxy {
 
+    /**
+     * Dummy class.
+     *
+     * @param item DUMMY
+     * @param meta DUMMY
+     * @param id DUMMY
+     */
     public void registerItemRenderer(Item item, int meta, String id){}
 
 }

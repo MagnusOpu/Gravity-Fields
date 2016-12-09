@@ -30,6 +30,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  * Contact me at zacharydsturtz@gmail.com
  */
 
+/**
+ * The main class of the Gravity Fields mod.
+ */
 @Mod(modid = GravityFields.modId, name = GravityFields.name, version = GravityFields.version, acceptedMinecraftVersions = "[1.10.2]")
 public class GravityFields {
 

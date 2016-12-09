@@ -24,16 +24,29 @@ import net.minecraft.item.Item;
  */
 public class GravityTab extends CreativeTabs {
 
+    /**
+     * Gravity Tab is the customized Creative Tab for the mod Gravity Fields.
+     */
     public GravityTab(){
         super(GravityFields.modId);
         setBackgroundImageName("gravityfields.png");
     }
 
+    /**
+     * Returns the icon to be set for the creative tab.
+     *
+     * @return The icon to be set for the creative tab.
+     */
     @Override
     public Item getTabIconItem() {
         return ModItems.gravityRangeStone;
     }
 
+    /**
+     * Returns whether or not the creative tab has a search bar.
+     *
+     * @return true
+     */
     @Override
     public boolean hasSearchBar(){
         return true;

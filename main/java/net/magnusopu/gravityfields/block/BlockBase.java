@@ -27,6 +27,12 @@ public class BlockBase extends Block {
 
     protected String name;
 
+    /**
+     * BlockBase is a basic constructor class for Gravity Field Blocks.
+     *
+     * @param material The material to make the block.
+     * @param name The unlocalized name for the block.
+     */
     public BlockBase(Material material, String name){
         super(material);
         this.name = name;
@@ -35,10 +41,21 @@ public class BlockBase extends Block {
         setCreativeTab(GravityFields.gravityTab);
     }
 
+    /**
+     * Registers an ItemBlock with this ItemModel.
+     *
+     * @param itemBlock The ItemBlock to register.
+     */
     public void registerItemModel(ItemBlock itemBlock){
         GravityFields.proxy.registerItemRenderer(itemBlock, 0, name);
     }
 
+    /**
+     * Sets the block's creative tab.
+     *
+     * @param tab The CreativeTab to set the Block's tab to.
+     * @return The block who's tab was set.
+     */
     @Override
     public BlockBase setCreativeTab(CreativeTabs tab){
         super.setCreativeTab(tab);

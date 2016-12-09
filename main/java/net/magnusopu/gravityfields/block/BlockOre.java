@@ -35,6 +35,12 @@ public class BlockOre extends BlockBase {
 
     private ArrayList<DropStruct> drops;
 
+    /**
+     * BlockOre is a basic class for Blocks that act like Ores.
+     *
+     * @param name The unlocalized name to set the BlockOre.
+     * @param drops An ArrayList of DropStructs containing all data on what to drop, the chance for it to drop, and how many to drop.
+     */
     public BlockOre(String name, ArrayList<DropStruct> drops){
         super(Material.ROCK, name);
         this.setHardness(10.0f);
@@ -43,6 +49,11 @@ public class BlockOre extends BlockBase {
         this.drops = drops;
     }
 
+    /**
+     * BlockOre is a basic class for Blocks that act like Ores.
+     *
+     * @param name The unlocalized name to set the BlockOre.
+     */
     public BlockOre(String name){
         super(Material.ROCK, name);
         this.setHardness(10.0f);
@@ -50,6 +61,15 @@ public class BlockOre extends BlockBase {
         this.setHarvestLevel("pickaxe", 2);
     }
 
+    /**
+     * This returns a complete list of items dropped from this block based on the "drops" ArrayList.
+     *
+     * @param world The current world
+     * @param pos Block position in world
+     * @param state Current state
+     * @param fortune Breakers fortune level
+     * @return An ArrayList containing all items this block drops
+     */
     @Override
     public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 
@@ -57,8 +77,8 @@ public class BlockOre extends BlockBase {
         boolean worked = false;
         Random rand = world instanceof World ? ((World) world).rand : RANDOM;
 
-        if(drops != null) {
-            if(!drops.isEmpty()) {
+        if(drops != null) { // Checking if custom drops is true
+            if(!drops.isEmpty()) { // Checking for funny business
                 boolean addedItem = false;
                 for (DropStruct drop : drops) {
                     int dropChance = drop.getChanceDropped();
@@ -67,6 +87,7 @@ public class BlockOre extends BlockBase {
                         int maxDropped = drop.getMaxDropped();
                         int minDropped = drop.getMinDropped();
 
+                        // Getting amount to drop
                         if (maxDropped > 1 && minDropped < maxDropped) {
                             count = rand.nextInt(maxDropped - minDropped) + minDropped;
                         }
@@ -84,12 +105,20 @@ public class BlockOre extends BlockBase {
             }
         }
 
+        // Adding a default drop value if no custom drops or something messed up
         if(!worked)
             ret.add(new ItemStack(getItemDropped(state, rand, fortune)));
 
         return ret;
     }
 
+
+
+    /**
+     *
+     * @param tab The CreativeTab to set the Block's tab to.
+     * @return The block who's tab was set.
+     */
     @Override
     public BlockOre setCreativeTab(CreativeTabs tab){
         super.setCreativeTab(tab);

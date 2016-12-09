@@ -25,6 +25,13 @@ import net.minecraftforge.client.model.ModelLoader;
 
 public class ClientProxy extends CommonProxy {
 
+    /**
+     * Registers an item with the game by setting it's model resource location.
+     *
+     * @param item Item to be registered.
+     * @param meta Meta of item to be registered.
+     * @param id unlocalized name of item.
+     */
     public void registerItemRenderer(Item item, int meta, String id){
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(GravityFields.modId + ":" + id, "inventory"));
     }

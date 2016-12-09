@@ -25,6 +25,11 @@ public class ItemBase extends Item {
 
     protected String name;
 
+    /**
+     * ItemBase is a basic constructor class for Gravity Field Items.
+     *
+     * @param name The unlocalized name of the item.
+     */
     public ItemBase(String name){
         this.name = name;
         setUnlocalizedName(name);
@@ -32,10 +37,19 @@ public class ItemBase extends Item {
         setCreativeTab(GravityFields.gravityTab);
     }
 
+    /**
+     * Registers the item's model.
+     */
     public void registerItemModel() {
         GravityFields.proxy.registerItemRenderer(this, 0, name);
     }
 
+    /**
+     * Sets the items's creative tab.
+     *
+     * @param tab The CreativeTab to set the Item's tab to.
+     * @return The item who's tab was set.
+     */
     @Override
     public ItemBase setCreativeTab(CreativeTabs tab){
         super.setCreativeTab(tab);

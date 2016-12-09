@@ -30,15 +30,27 @@ public class ModBlocks {
     public static BlockBase gravityBlock;
     public static BlockOre gravityOreBlock;
 
+    /**
+     * Initializes all registered blocks for the Gravity Fields mod.
+     */
     public static void init(){
         gravityBlock = register(new BlockBase(Material.ROCK, "gravityBlock"));
         ArrayList<DropStruct> gravityOreDrops = new ArrayList<DropStruct>();
-        gravityOreDrops.add(new DropStruct(ModItems.gravityOre, 1, 4, 100));
-        gravityOreDrops.add(new DropStruct(ModItems.gravityRangeStone, 1, 1, 10));
-        gravityOreDrops.add(new DropStruct(ModItems.gravityStrengthStone, 1, 1, 10));
+            // Adding drops for gravityOre
+            gravityOreDrops.add(new DropStruct(ModItems.gravityOre, 1, 4, 100));
+            gravityOreDrops.add(new DropStruct(ModItems.gravityRangeStone, 1, 1, 10));
+            gravityOreDrops.add(new DropStruct(ModItems.gravityStrengthStone, 1, 1, 10));
         gravityOreBlock = register(new BlockOre("gravityOreBlock", gravityOreDrops));
     }
 
+    /**
+     * Registers the block and itemBlock with the GameRegistry.
+     *
+     * @param block Block to be registered.
+     * @param itemBlock ItemBlock to be registered.
+     * @param <T> Anything extending Block.
+     * @return The registered block.
+     */
     private static <T extends Block> T register(T block, ItemBlock itemBlock){
         GameRegistry.register(block);
         GameRegistry.register(itemBlock);
@@ -49,6 +61,13 @@ public class ModBlocks {
         return block;
     }
 
+    /**
+     * Registers the block with the GameRegistry.
+     *
+     * @param block Block to be registered.
+     * @param <T> Anything extending Block.
+     * @return The registered block.
+     */
     private static <T extends Block> T register(T block){
         ItemBlock itemBlock = new ItemBlock(block);
 

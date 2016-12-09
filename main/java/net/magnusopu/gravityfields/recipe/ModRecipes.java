@@ -24,6 +24,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public class ModRecipes {
 
+    /**
+     * Initializing all recipes for the mod Gravity Fields.
+     */
     public static void init(){
         // Adding recipe for Gravity Block
         GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.gravityBlock), ModItems.gravityOre, ModItems.gravityOre, ModItems.gravityOre, ModItems.gravityOre);

@@ -21,10 +21,21 @@ import net.minecraft.creativetab.CreativeTabs;
  */
 public class ItemGravityStone extends ItemBase {
 
+    /**
+     * ItemGravityStone is a class constructor for all items which could be modifications for a Gravity Field Generator.
+     *
+     * @param name The unlocalized name of the item.
+     */
     public ItemGravityStone(String name){
         super(name);
     }
 
+    /**
+     * Sets the items's creative tab.
+     *
+     * @param tab The CreativeTab to set the Item's tab to.
+     * @return The item who's tab was set.
+     */
     @Override
     public ItemGravityStone setCreativeTab(CreativeTabs tab){
         super.setCreativeTab(tab);

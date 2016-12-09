@@ -27,13 +27,22 @@ public final class ModItems {
     public static ItemGravityStone gravityRangeStone;
     public static ItemGravityStone gravityStrengthStone;
 
+    /**
+     * Initializes all registered items for the Gravity Fields mod.
+     */
     public static void init(){
         gravityOre = register(new ItemBase("gravityOre"));
         gravityRangeStone = register(new ItemGravityStone("gravityRangeStone"));
         gravityStrengthStone = register(new ItemGravityStone("gravityStrengthStone"));
     }
 
-
+    /**
+     * Registers the item with the GameRegistry.
+     *
+     * @param item Item to be registered.
+     * @param <T> Anything extending Item.
+     * @return The registered item.
+     */
     private static <T extends Item> T register(T item) {
         GameRegistry.register(item);
 

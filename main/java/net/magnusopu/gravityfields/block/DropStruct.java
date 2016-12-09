@@ -26,6 +26,14 @@ public class DropStruct {
     private int maxDropped;
     private int chanceDropped;
 
+    /**
+     * A struct containing all data related to an item to be dropped.
+     *
+     * @param itemDropped The item to be dropped.
+     * @param minDropped The minimum amount of the item to be dropped if it is dropped.
+     * @param maxDropped The maximum amount of the item to be dropped if it is dropped.
+     * @param chanceDropped The chance for the item to be dropped.
+     */
     public DropStruct(Item itemDropped, int minDropped, int maxDropped, int chanceDropped){
         this.itemDropped = itemDropped;
         this.minDropped = minDropped;
@@ -33,55 +41,74 @@ public class DropStruct {
         this.chanceDropped = chanceDropped;
     }
 
-    public DropStruct(Item itemDropped, int chanceDropped){
-        this.itemDropped = itemDropped;
-        this.minDropped = 1;
-        this.maxDropped = 1;
-        this.chanceDropped = chanceDropped;
-    }
-
-    public DropStruct(Item itemDropped, int maxDropped, int chanceDropped){
-        this.itemDropped = itemDropped;
-        this.minDropped = 1;
-        this.maxDropped = maxDropped;
-        this.chanceDropped = chanceDropped;
-    }
-
-    public DropStruct(Item itemDropped){
-        this.itemDropped = itemDropped;
-        this.minDropped = 1;
-        this.maxDropped = 1;
-        this.chanceDropped = 100;
-    }
-
+    /**
+     * A getter for the item to be dropped.
+     *
+     * @return The Item to be dropped.
+     */
     public Item getItemDropped() {
         return itemDropped;
     }
 
+    /**
+     * A setter for the item to be dropped.
+     *
+     * @param itemDropped The item to be dropped.
+     */
     public void setItemDropped(Item itemDropped) {
         this.itemDropped = itemDropped;
     }
 
+    /**
+     * A getter for the minimum amount of the item to be dropped.
+     *
+     * @return The minimum amount of the item to be dropped.
+     */
     public int getMinDropped() {
         return minDropped;
     }
 
+    /**
+     * A setter for the minimum amount of the item to be dropped.
+     *
+     * @param minDropped The minimum amount of item to be dropped.
+     */
     public void setMinDropped(int minDropped) {
         this.minDropped = minDropped;
     }
 
+    /**
+     * A setter for the maximum amount of the item to be dropped.
+     *
+     * @return maxDropped The maximum amount of item to be dropped.
+     */
     public int getMaxDropped() {
         return maxDropped;
     }
 
+    /**
+     * A setter for the maximum amount of the item to be dropped.
+     *
+     * @param maxDropped
+     */
     public void setMaxDropped(int maxDropped) {
         this.maxDropped = maxDropped;
     }
 
+    /**
+     * A getter for the chance that the item will be dropped.
+     *
+     * @return The chance that the item will be dropped.
+     */
     public int getChanceDropped() {
         return chanceDropped;
     }
 
+    /**
+     * A setter for the chance that the item will be dropped.
+     *
+     * @param chanceDropped The chance that the item will be dropped.
+     */
     public void setChanceDropped(int chanceDropped) {
         this.chanceDropped = chanceDropped;
     }
