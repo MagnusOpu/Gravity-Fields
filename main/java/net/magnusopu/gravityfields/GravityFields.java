@@ -1,12 +1,15 @@
-package net.magnusopus.gravityfields;
+package net.magnusopu.gravityfields;
 
+import net.magnusopu.gravityfields.item.ModItems;
+import net.magnusopu.gravityfields.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 /**
- * Copyright (C) 2016 MagnusOpus.
+ * Copyright (C) 2016 MagnusOpu.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,9 +30,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = GravityFields.modId, name = GravityFields.name, version = GravityFields.version, acceptedMinecraftVersions = "[1.10.2]")
 public class GravityFields {
 
-    public static final String modId = "gravity-fields";
+    public static final String modId = "gravityfields";
     public static final String name = "Gravity Fields";
     public static final String version = "1.0.0";
+
+    @SidedProxy(serverSide = "net.magnusopu.gravityfields.proxy.CommonProxy", clientSide = "net.magnusopu.gravityfields.proxy.ClientProxy")
+    public static CommonProxy proxy;
 
     @Mod.Instance(modId)
     public static GravityFields instance;
@@ -37,11 +43,11 @@ public class GravityFields {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
         System.out.println(name + " is loading!");
+        ModItems.init();
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event){
-
     }
 
     @Mod.EventHandler
