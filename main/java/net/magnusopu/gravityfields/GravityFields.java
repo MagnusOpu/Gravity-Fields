@@ -1,5 +1,6 @@
 package net.magnusopu.gravityfields;
 
+import net.magnusopu.gravityfields.block.ModBlocks;
 import net.magnusopu.gravityfields.item.ModItems;
 import net.magnusopu.gravityfields.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
@@ -44,6 +45,7 @@ public class GravityFields {
     public void preInit(FMLPreInitializationEvent event){
         System.out.println(name + " is loading!");
         ModItems.init();
+        ModBlocks.init();
     }
 
     @Mod.EventHandler

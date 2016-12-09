@@ -1,0 +1,8 @@
+# Items
+item.gravityOre.name=Gravity Ore
+item.gravityRangeStone.name=Gravity Range Stone
+item.gravityStrengthStone.name=Gravity Strength Stone
+
+# Blocks
+tile.gravityBlock.name=Gravity Block
+tile.gravityOreBlock.name=Gravity Ore Block

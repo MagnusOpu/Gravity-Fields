@@ -1,8 +1,6 @@
 package net.magnusopu.gravityfields.item;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Copyright (C) 2016 MagnusOpu.
@@ -21,26 +19,15 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+public class ItemGravityStone extends ItemBase {
 
-public final class ModItems {
-
-    public static ItemBase gravityOre;
-    public static ItemGravityStone gravityRangeStone;
-    public static ItemGravityStone gravityStrengthStone;
-
-    public static void init(){
-        gravityOre = register(new ItemBase("gravityOre").setCreativeTab(CreativeTabs.MATERIALS));
-        gravityRangeStone = register(new ItemGravityStone("gravityRangeStone").setCreativeTab(CreativeTabs.TOOLS));
-        gravityStrengthStone = register(new ItemGravityStone("gravityStrengthStone").setCreativeTab(CreativeTabs.TOOLS));
+    public ItemGravityStone(String name){
+        super(name);
     }
 
-
-    private static <T extends Item> T register(T item) {
-        GameRegistry.register(item);
-
-        if(item instanceof ItemBase)
-            ((ItemBase)item).registerItemModel();
-
-        return item;
+    @Override
+    public ItemGravityStone setCreativeTab(CreativeTabs tab){
+        super.setCreativeTab(tab);
+        return this;
     }
 }
