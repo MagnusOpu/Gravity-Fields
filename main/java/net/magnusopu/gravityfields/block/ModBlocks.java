@@ -1,9 +1,12 @@
 package net.magnusopu.gravityfields.block;
 
+import net.magnusopu.gravityfields.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import java.util.ArrayList;
 
 /**
  * Copyright (C) 2016 MagnusOpu.
@@ -29,7 +32,11 @@ public class ModBlocks {
 
     public static void init(){
         gravityBlock = register(new BlockBase(Material.ROCK, "gravityBlock"));
-        gravityOreBlock = register(new BlockOre("gravityOreBlock"));
+        ArrayList<DropStruct> gravityOreDrops = new ArrayList<DropStruct>();
+        gravityOreDrops.add(new DropStruct(ModItems.gravityOre, 1, 4, 100));
+        gravityOreDrops.add(new DropStruct(ModItems.gravityRangeStone, 1, 1, 10));
+        gravityOreDrops.add(new DropStruct(ModItems.gravityStrengthStone, 1, 1, 10));
+        gravityOreBlock = register(new BlockOre("gravityOreBlock", gravityOreDrops));
     }
 
     private static <T extends Block> T register(T block, ItemBlock itemBlock){

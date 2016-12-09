@@ -2,7 +2,6 @@ package net.magnusopu.gravityfields.recipe;
 
 import net.magnusopu.gravityfields.block.ModBlocks;
 import net.magnusopu.gravityfields.item.ModItems;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -26,10 +25,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModRecipes {
 
     public static void init(){
-        // Adding recipe for Gravity Strength Stone
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.gravityStrengthStone), ModItems.gravityOre, Items.IRON_INGOT);
-        // Adding recipe for Gravity Range Stone
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.gravityRangeStone), ModItems.gravityOre, Items.COMPASS);
         // Adding recipe for Gravity Block
         GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.gravityBlock), ModItems.gravityOre, ModItems.gravityOre, ModItems.gravityOre, ModItems.gravityOre);
     }

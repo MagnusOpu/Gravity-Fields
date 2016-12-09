@@ -6,7 +6,7 @@ GRAVITY FIELDS -- ENTRY 001
 			GRAVITY FIELD GENERATOR
 			GRAVITY BLOCK
 			GRAVITY STRENGTH STONE
-			GRAVITY DISTANCE STONE
+			GRAVITY RANGE STONE
 		NATURAL RESOURCES
 			GRAVITY ORE
 			
@@ -50,8 +50,8 @@ GRAVITY FIELDS -- ENTRY 001
 				
 		GRAVITY FIELD GENERATOR
 			INTRODUCTION
-				Generated gravitational field with varying degrees of strength and in varying distances dependent on gravity strength stone
-				and gravity distance chip. Defaults to a base strength and/or distance without gravity stones.
+				Generated gravitational field with varying degrees of strength and in varying ranges dependent on gravity strength stone
+				and gravity range chip. Defaults to a base strength and/or range without gravity stones.
 			RECIPE
 				G I G
 				I B I
@@ -66,26 +66,19 @@ GRAVITY FIELDS -- ENTRY 001
 			INTRODUCTION
 				Right clicking opens up a menu that can be used to set the gravity stone's strength. Putting the strength stone into a
 				gravity field generator will then alter the field generator's effective strength to the gravity stone's strength.
-			RECIPE
-				I G |
-				| | |
-				| | |
-				Where G = Gravity Ore
-				Where I = Iron Ingot
+			FOUND FROM
+			    Breaking gravity ore blocks
 				
-		GRAVITY DISTANCE STONE
+		GRAVITY RANGE STONE
 			INTRODUCTION
-				Right clicking opens up a menu that can be used to set the gravity stone's distance. Putting the distance stone into a
-				gravity field generator will then alter the field generator's effective range to the gravity stone's distance.
-			RECIPE
-				C G |
-				| | |
-				| | |
-				Where G = Gravity Ore
-				Where C = Compass
+				Right clicking opens up a menu that can be used to set the gravity stone's range. Putting the range stone into a
+				gravity field generator will then alter the field generator's effective range to the gravity stone's range.
+			FOUND FROM
+			    Breaking gravity ore blocks
 				
 	NATURAL RESOURCE IDEAS
 
 		GRAVITY ORE
 			INTRODUCTION
-				This ore will be naturally generated in clusters of 2-4, and will drop a single gravity ore upon destruction.
+				This ore will be naturally generated in clusters of 2-4, and will drop a single gravity ore upon destruction as well as a 10% chance of
+				dropping a gravity strength stone and a 10% chance of dropping a gravity range stone.
