@@ -1,9 +1,8 @@
-package net.magnusopu.gravityfields.proxy;
+package net.magnusopu.gravityfields.container;
 
-import net.magnusopu.gravityfields.GravityFields;
-import net.magnusopu.gravityfields.gui.GuiHandler;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.magnusopu.gravityfields.slot.GravityGeneratorSlot;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.IInventory;
 
 /**
  * Copyright (C) 2016 MagnusOpu.
@@ -22,20 +21,10 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+public class ContainerGravityGenerator extends ContainerSingleInput {
 
-public class CommonProxy {
-
-    /**
-     * Registers an item with the game by setting it's model resource location.
-     *
-     * @param item Item to be registered.
-     * @param meta Meta of item to be registered.
-     * @param id unlocalized name of item.
-     */
-    public void registerItemRenderer(Item item, int meta, String id){}
-
-    public void init(){
-        NetworkRegistry.INSTANCE.registerGuiHandler(GravityFields.instance, new GuiHandler());
+    public ContainerGravityGenerator(InventoryPlayer inventoryPlayer, IInventory inventory, int input){
+        super(inventoryPlayer, inventory, input, false);
+        addSlotToContainer(new GravityGeneratorSlot(tileBase, input, 80, 35));
     }
-
 }

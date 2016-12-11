@@ -33,6 +33,7 @@ public class ClientProxy extends CommonProxy {
      * @param id unlocalized name of item.
      */
     public void registerItemRenderer(Item item, int meta, String id){
+        System.out.println(GravityFields.modId + ":" + id);
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(GravityFields.modId + ":" + id, "inventory"));
     }
 

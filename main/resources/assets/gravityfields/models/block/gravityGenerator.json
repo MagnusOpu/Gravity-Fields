@@ -1,0 +1,70 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "side": "gravityfields:blocks/gravityGeneratorSide",
+    "other": "gravityfields:blocks/gravityGenerator",
+    "particle": "gravityfields:blocks/gravityGenerator"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 10, 16],
+      "faces": {
+        "north": {
+          "uv": [0, 0, 10, 10],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [0, 0, 10, 10],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [0, 0, 10, 10],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [0, 0, 10, 10],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [0, 0, 10, 10],
+          "texture": "#other"
+        },
+        "down": {
+          "uv": [0, 0, 10, 10],
+          "texture": "#other"
+        }
+      }
+    },
+    {
+      "from": [6, 11, 6],
+      "to": [10, 16, 10],
+      "faces": {
+        "north": {
+          "uv": [0, 0, 12, 8],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [0, 0, 12, 8],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [0, 0, 12, 8],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [0, 0, 12, 8],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [0, 0, 10, 10],
+          "texture": "#other"
+        },
+        "down": {
+          "uv": [0, 0, 10, 10],
+          "texture": "#other"
+        }
+      }
+    }
+  ]
+}

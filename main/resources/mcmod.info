@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "gravityfields",
+  "name": "Gravity Fields",
+  "description": "The Gravity Fields mod adds several machines that can be used to generate fields of gravity. The core has one machine that generates gravity essence from gravity ore, that can then be transferred using special pipes along to a gravity field generator. The gravity field generator can be configurated with gravity stones to alter the effective range and strength of gravity.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["MagnusOpu"],
+  "credits": "MagnusOpu for design and development",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

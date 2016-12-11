@@ -1,0 +1,18 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "facing=north": { "model": "gravityfields:gravityGenerator" },
+    "facing=south": { "model": "gravityfields:gravityGenerator", "y": 180 },
+    "facing=west":  { "model": "gravityfields:gravityGenerator", "y": 270 },
+    "facing=east":  { "model": "gravityfields:gravityGenerator", "y": 90 },
+    "facing=up": { "model": "gravityfields:gravityGenerator" },
+    "facing=down": { "model": "gravityfields:gravityGenerator" },
+    "normal": {
+      "model": "gravityfields:gravityGenerator"
+    },
+    "inventory": {
+      "model": "gravityfields:gravityGenerator",
+      "transform": "forge:default-block"
+    }
+  }
+}

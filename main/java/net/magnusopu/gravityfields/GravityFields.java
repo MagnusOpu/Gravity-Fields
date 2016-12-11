@@ -5,6 +5,7 @@ import net.magnusopu.gravityfields.client.GravityTab;
 import net.magnusopu.gravityfields.item.ModItems;
 import net.magnusopu.gravityfields.proxy.CommonProxy;
 import net.magnusopu.gravityfields.recipe.ModRecipes;
+import net.magnusopu.gravityfields.tileentity.ModTileEntities;
 import net.magnusopu.gravityfields.world.ModWorldGenerator;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -56,11 +57,13 @@ public class GravityFields {
         ModItems.init();
         ModBlocks.init();
         ModRecipes.init();
+        ModTileEntities.init();
         GameRegistry.registerWorldGenerator(new ModWorldGenerator(), 3);
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event){
+        proxy.init();
     }
 
     @Mod.EventHandler

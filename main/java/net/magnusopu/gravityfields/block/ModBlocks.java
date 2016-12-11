@@ -1,5 +1,7 @@
 package net.magnusopu.gravityfields.block;
 
+import net.magnusopu.gravityfields.block.machine.GravityGenerator;
+import net.magnusopu.gravityfields.block.machine.Machine;
 import net.magnusopu.gravityfields.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -29,18 +31,22 @@ public class ModBlocks {
 
     public static BlockBase gravityBlock;
     public static BlockOre gravityOreBlock;
+    public static GravityGenerator gravityGenerator;
 
     /**
      * Initializes all registered blocks for the Gravity Fields mod.
      */
     public static void init(){
         gravityBlock = register(new BlockBase(Material.ROCK, "gravityBlock"));
+
         ArrayList<DropStruct> gravityOreDrops = new ArrayList<DropStruct>();
             // Adding drops for gravityOre
             gravityOreDrops.add(new DropStruct(ModItems.gravityOre, 1, 4, 100));
             gravityOreDrops.add(new DropStruct(ModItems.gravityRangeStone, 1, 1, 10));
             gravityOreDrops.add(new DropStruct(ModItems.gravityStrengthStone, 1, 1, 10));
         gravityOreBlock = register(new BlockOre("gravityOreBlock", gravityOreDrops));
+
+        gravityGenerator = register(new GravityGenerator());
     }
 
     /**
@@ -55,8 +61,13 @@ public class ModBlocks {
         GameRegistry.register(block);
         GameRegistry.register(itemBlock);
 
-        if(block instanceof BlockBase)
-            ((BlockBase)block).registerItemModel(itemBlock);
+        if(block instanceof BlockBase) {
+            ((BlockBase) block).registerItemModel(itemBlock);
+        }
+
+        if(block instanceof Machine) {
+            ((Machine) block).registerItemModel(itemBlock);
+        }
 
         return block;
     }

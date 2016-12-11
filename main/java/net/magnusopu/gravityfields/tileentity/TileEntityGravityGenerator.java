@@ -1,9 +1,7 @@
-package net.magnusopu.gravityfields.proxy;
+package net.magnusopu.gravityfields.tileentity;
 
-import net.magnusopu.gravityfields.GravityFields;
-import net.magnusopu.gravityfields.gui.GuiHandler;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.magnusopu.gravityfields.item.ModItems;
+import net.minecraft.item.ItemStack;
 
 /**
  * Copyright (C) 2016 MagnusOpu.
@@ -23,19 +21,12 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
  * Contact me at zacharydsturtz@gmail.com
  */
 
-public class CommonProxy {
+public class TileEntityGravityGenerator extends TileEntitySingleInput {
 
-    /**
-     * Registers an item with the game by setting it's model resource location.
-     *
-     * @param item Item to be registered.
-     * @param meta Meta of item to be registered.
-     * @param id unlocalized name of item.
-     */
-    public void registerItemRenderer(Item item, int meta, String id){}
+    private ItemTick[] tickableItems = {new ItemTick(ModItems.gravityOre, 150)};
 
-    public void init(){
-        NetworkRegistry.INSTANCE.registerGuiHandler(GravityFields.instance, new GuiHandler());
+    public TileEntityGravityGenerator(){
+        super(new ItemStack[1], "gravityGenerator", 0, "gravityGenerator", new ItemTick(ModItems.gravityOre, 150));
     }
 
 }
