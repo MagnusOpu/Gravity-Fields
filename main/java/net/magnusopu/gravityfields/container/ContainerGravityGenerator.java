@@ -21,6 +21,7 @@ import net.minecraft.inventory.IInventory;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+
 public class ContainerGravityGenerator extends ContainerSingleInput {
 
     public ContainerGravityGenerator(InventoryPlayer inventoryPlayer, IInventory inventory, int input){
