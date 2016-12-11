@@ -112,6 +112,19 @@ public class Machine extends BlockContainer {
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) { return null; }
 
+    /**
+     * Gets the {@link IBlockState} to place
+     * @param worldIn The world the block is being placed in
+     * @param pos The position the block is being placed at
+     * @param facing The side the block is being placed on
+     * @param hitX The X coordinate of the hit vector
+     * @param hitY The Y coordinate of the hit vector
+     * @param hitZ The Z coordinate of the hit vector
+     * @param meta The metadata of {@link ItemStack} as processed by {@link Item#getMetadata(int)}
+     * @param placer The entity placing the block
+     * @param stack The stack being used to place this block
+     * @return The state to be placed in the world
+     */
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, ItemStack stack){
         return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());

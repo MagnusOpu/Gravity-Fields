@@ -24,6 +24,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public final class ModItems {
 
     public static ItemBase gravityOre;
+    public static ItemBase gravityEssence;
     public static ItemGravityStone gravityRangeStone;
     public static ItemGravityStone gravityStrengthStone;
 
@@ -32,6 +33,7 @@ public final class ModItems {
      */
     public static void init(){
         gravityOre = register(new ItemBase("gravityOre"));
+        gravityEssence = register(new ItemBase("gravityEssence"));
         gravityRangeStone = register(new ItemGravityStone("gravityRangeStone"));
         gravityStrengthStone = register(new ItemGravityStone("gravityStrengthStone"));
     }

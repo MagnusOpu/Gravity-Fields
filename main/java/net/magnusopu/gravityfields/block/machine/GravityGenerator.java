@@ -31,12 +31,16 @@ import javax.annotation.Nullable;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+
 public class GravityGenerator extends Machine {
 
     public GravityGenerator(){
         super("gravityGenerator");
     }
 
+    /**
+     * Overrides default onBlockActivated method and opens a GUI on activation
+     */
     @Override
     public boolean onBlockActivated(World parWorld, BlockPos parBlockPos, IBlockState state, EntityPlayer parPlayer, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ){
         if(!parWorld.isRemote){
@@ -46,6 +50,9 @@ public class GravityGenerator extends Machine {
         return true;
     }
 
+    /**
+     * Returns a new instance of a gravity generator's tile entity class. Called on placing the block.
+     */
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         System.out.println("GravityGenerator createNewTileEntity()");
