@@ -1,3 +1,2 @@
-Current: Fix localization bug on gravityEssenceGenerator container.
-Next: Add comments everywhere, remove all "Ticking" classes and have their subclasses instead implement a new class called Tickable.
-After that: Start building infrastructure for the gravity field generator.
+Current: Add comments everywhere, remove all "Ticking" classes and have their subclasses instead implement a new class called Tickable.
+Next: Start building infrastructure for the gravity field generator.
