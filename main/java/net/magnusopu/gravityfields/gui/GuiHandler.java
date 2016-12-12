@@ -27,8 +27,20 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+
 public class GuiHandler implements IGuiHandler {
 
+    /**
+     * Displays a container to the server dependent on ID input
+     *
+     * @param ID The GUI to display
+     * @param player The player to display the container to
+     * @param world The world to display the container in
+     * @param x The x position of the container
+     * @param y The y position of the container
+     * @param z The z position of the container
+     * @return A container dependent on the ID input
+     */
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z){
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x,y,z));
@@ -44,6 +56,17 @@ public class GuiHandler implements IGuiHandler {
         return null;
     }
 
+    /**
+     * Displays a GUI element to the client dependent on ID input
+     *
+     * @param ID The GUI to display
+     * @param player The player to display the GUI to
+     * @param world The world to display the GUI in
+     * @param x The x position of the GUI
+     * @param y The y position of the GUI
+     * @param z The z position of the GUI
+     * @return A GUI dependent on the ID input
+     */
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z){
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x,y,z));

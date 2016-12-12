@@ -32,6 +32,7 @@ public class MRecipes {
     public static void init(){
         // Adding recipe for Gravity Block
         GameRegistry.addShapedRecipe(new ItemStack(MBlocks.gravityBlock), "GG", "GG", 'G', MItems.gravityOre);
+        // Adding recipe for Gravity Essence Generator
         GameRegistry.addShapedRecipe(new ItemStack(MBlocks.gravityEssenceGenerator),  "GIG",
                                                                                                 "IBI",
                                                                                                 "GIG",

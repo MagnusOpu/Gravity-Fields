@@ -23,10 +23,20 @@ import net.minecraft.item.ItemStack;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+
 public class InputSlot extends Slot {
 
     private Item[] allowedItems;
 
+    /**
+     * InputSlot is a class that extends Slot built for the entire purpose of only allowing a select few items to be placed in it.
+     *
+     * @param inventory The inventory that the slot resides in.
+     * @param slotIndex The index of the slot.
+     * @param xDisplayPos The x position to display the slot at.
+     * @param yDisplayPos The y position to display the slot at.
+     * @param allowedItems The items allowed to be placed in the slot.
+     */
     public InputSlot(IInventory inventory, int slotIndex, int xDisplayPos, int yDisplayPos, IOItem... allowedItems){
         super(inventory, slotIndex, xDisplayPos, yDisplayPos);
         this.allowedItems = new Item[allowedItems.length];
@@ -35,6 +45,12 @@ public class InputSlot extends Slot {
         }
     }
 
+    /**
+     * Overrides isItemValid to make sure only the allowedItems are placed in the slot.
+     *
+     * @param stack The stack attempting to be placed in the slot.
+     * @return Whether or not the stack is allowed in the slot.
+     */
     @Override
     public boolean isItemValid(ItemStack stack){
         Item item = stack.getItem();

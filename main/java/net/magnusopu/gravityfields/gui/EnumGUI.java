@@ -17,6 +17,7 @@ package net.magnusopu.gravityfields.gui;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+
 public enum EnumGUI {
     GRAVITY_GENERATOR,
     GRAVITY_FIELD_GENERATOR,

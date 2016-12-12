@@ -24,11 +24,18 @@ import net.minecraft.inventory.Slot;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+
 public class ContainerBase extends Container {
 
     protected final IInventory tileBase;
     protected final int sizeInventory;
 
+    /**
+     * ContainerBase is a container template for custom containers.
+     *
+     * @param inventoryPlayer The player who owns the inventory accessing the container.
+     * @param inventory The inventory of the container.
+     */
     public ContainerBase(InventoryPlayer inventoryPlayer, IInventory inventory){
         System.out.println("ContainerBase constructor()");
 
@@ -48,17 +55,34 @@ public class ContainerBase extends Container {
         }
     }
 
+    /**
+     * Adds the container to the list of all listeners.
+     *
+     * @param listener The listener to add.
+     */
     @Override
     public void addListener(IContainerListener listener){
         super.addListener(listener);
         listener.sendAllWindowProperties(this, tileBase);
     }
 
+    /**
+     * Updates the progress bar in the container.
+     *
+     * @param id The id of the field to update.
+     * @param data The value of the field to update.
+     */
     @Override
     public void updateProgressBar(int id, int data){
         tileBase.setField(id, data);
     }
 
+    /**
+     * Determines if the player can interact with the container.
+     *
+     * @param playerIn The player who is attempting to interact with the container.
+     * @return True if the player can interact, false otherwise.
+     */
     @Override
     public boolean canInteractWith(EntityPlayer playerIn){
         return tileBase.isUseableByPlayer(playerIn);

@@ -26,10 +26,19 @@ public class TContainer extends ContainerBase {
     protected int currentTicks;
     protected int currentTickMax;
 
+    /**
+     * TContainer is a container class that adds ticking functionality and extends ContainerBase
+     *
+     * @param inventoryPlayer The inventory of the player interacting with the container.
+     * @param inventory The inventory of the container.
+     */
     public TContainer(InventoryPlayer inventoryPlayer, IInventory inventory){
         super(inventoryPlayer, inventory);
     }
 
+    /**
+     * Called on any changes happening within the container and updates the progress par constantly.
+     */
     @Override
     public void detectAndSendChanges(){
         super.detectAndSendChanges();

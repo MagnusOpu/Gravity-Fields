@@ -34,6 +34,9 @@ public class CommonProxy {
      */
     public void registerItemRenderer(Item item, int meta, String id){}
 
+    /**
+     * Initializing special classes
+     */
     public void init(){
         NetworkRegistry.INSTANCE.registerGuiHandler(GravityFields.instance, new GuiHandler());
     }

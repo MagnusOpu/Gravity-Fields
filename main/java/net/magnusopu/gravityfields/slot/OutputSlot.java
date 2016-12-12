@@ -24,10 +24,24 @@ import net.minecraft.item.ItemStack;
 
 public class OutputSlot extends Slot {
 
+    /**
+     * OutputSlot is a class extending Slot built for the entire purpose of not allowing the player to place anything in it.
+     *
+     * @param inventory The inventory that the slot resides in.
+     * @param slotIndex The index of the slot.
+     * @param xDisplayPos The x position to display the slot at.
+     * @param yDisplayPos The y position to display the slot at.
+     */
     public OutputSlot(IInventory inventory, int slotIndex, int xDisplayPos, int yDisplayPos){
         super(inventory, slotIndex, xDisplayPos, yDisplayPos);
     }
 
+    /**
+     * Overrides isItemValid to make sure no items are placed in the slot.
+     *
+     * @param stack The stack attempting to be placed in the slot.
+     * @return false
+     */
     @Override
     public boolean isItemValid(ItemStack stack){
         return false;

@@ -1,7 +1,6 @@
 package net.magnusopu.gravityfields.tileentity;
 
-import net.magnusopu.gravityfields.item.IOItem;
-import net.magnusopu.gravityfields.item.MItems;
+import net.magnusopu.gravityfields.item.IOItemConfig;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -24,8 +23,11 @@ import net.minecraft.item.ItemStack;
 
 public class GEGTileEntity extends IOTileEntity {
 
+    /**
+     * GEGTileEntity is a class that extends IOTileEntity that defines a type of tile entity built for the block gravityEssenceGenerator.
+     */
     public GEGTileEntity(){
-        super(new ItemStack[2], "gravityEssenceGenerator", 0, 1, "gravityEssenceGenerator", new IOItem(MItems.gravityOre, MItems.gravityEssence, 150));
+        super(new ItemStack[2], "gravityEssenceGenerator", 0, 1, "gravityEssenceGenerator", IOItemConfig.GRAVITY_ORE_TO_ESSENCE.getConfig());
     }
 
 }

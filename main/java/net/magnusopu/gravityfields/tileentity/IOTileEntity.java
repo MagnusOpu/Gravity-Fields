@@ -33,6 +33,16 @@ public class IOTileEntity extends TTileEntity {
     protected int outputSlot = 1;
     protected IOItem[] allowedItems;
 
+    /**
+     * IOTileEntity is a class extending TTIleEntity buiilt for the sole purpose of housing a container that will have an inventory with one input slot and one output slot.
+     *
+     * @param itemStackArray The starting itemstacks in the inventory.
+     * @param name The name of the tile entity.
+     * @param inputSlot The index of the input slot.
+     * @param outputSlot The index of the output slot.
+     * @param guiID The ID string of the GUI to display.
+     * @param allowedItems The allowedItems in the input/output slots.
+     */
     public IOTileEntity(ItemStack[] itemStackArray, String name, int inputSlot, int outputSlot, String guiID, IOItem... allowedItems){
         super(itemStackArray, name, guiID);
         if(inputSlot < itemStackArray.length){
@@ -42,22 +52,11 @@ public class IOTileEntity extends TTileEntity {
         this.allowedItems = allowedItems;
     }
 
-    /*@Override
-    public void setInventorySlotContents(int index, ItemStack stack){
-        boolean isSameStackAlreadyInSlot = stack != null && stack.isItemEqual(itemStackArray[index]) && ItemStack.areItemStackTagsEqual(stack, itemStackArray[index]);
-        itemStackArray[index] = stack;
-        if(stack != null && stack.stackSize > getInventoryStackLimit()){
-            stack.stackSize = getInventoryStackLimit();
-        }
-        String name = stack == null ? "Null?" : stack.getDisplayName();
-
-        if(index == inputSlot && !isSameStackAlreadyInSlot && stack != null){
-            currentTickMax = IOItem.findTicks(stack.getItem(), allowedItems);
-            currentTicks = 0;
-            markDirty();
-        }
-    }*/
-
+    /**
+     * Adds special parameters to the NBTTagList when something attempts to read it.
+     *
+     * @param compound The nbt tag contents.
+     */
     @Override
     public void readFromNBT(NBTTagCompound compound){
         super.readFromNBT(compound);
@@ -83,6 +82,11 @@ public class IOTileEntity extends TTileEntity {
 
     }
 
+    /**
+     * Adds special parameters to the NBTTagList when something attempts to write to it.
+     *
+     * @param compound The nbt tag contents.
+     */
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound){
         super.writeToNBT(compound);
@@ -109,17 +113,37 @@ public class IOTileEntity extends TTileEntity {
         return compound;
     }
 
+    /**
+     * Called when someone interacts with the tile entity and creates a container to show them.
+     *
+     * @param playerInventory The inventory of the player interacting with the tile entity.
+     * @param playerIn The player interacting with the tile entity.
+     * @return The container created.
+     */
     @Override
     public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn){
         System.out.println("IOEntityBase createContainer()");
         return new IOContainer(playerInventory, this, inputSlot, outputSlot, allowedItems);
     }
 
+    /**
+     * Determines if the item is valid for the slot.
+     *
+     * @param index The slot the item is attempting to be placed in.
+     * @param stack The item that is attempting to be placed in the slot.
+     * @return Whether or not the item is valid for the slot.
+     */
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack){
-        return index == inputSlot ? IOItem.validInput(stack.getItem(), allowedItems) : true;
+        if(index == inputSlot){
+            return IOItem.validInput(stack.getItem(), allowedItems);
+        } else
+            return index != outputSlot;
     }
 
+    /**
+     * Called on every tick to update the container.
+     */
     @Override
     public void update(){
         if(!worldObj.isRemote) {
@@ -159,14 +183,29 @@ public class IOTileEntity extends TTileEntity {
         }
     }
 
+    /**
+     * Getter for allowedItems.
+     *
+     * @return allowedItems
+     */
     public IOItem[] getAllowedItems() {
         return allowedItems;
     }
 
+    /**
+     * Getter for inputSlot.
+     *
+     * @return inputSlot.
+     */
     public int getInputSlot(){
         return inputSlot;
     }
 
+    /**
+     * Getter for outputSlot.
+     *
+     * @return outputSlot.
+     */
     public int getOutputSlot(){
         return outputSlot;
     }

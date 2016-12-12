@@ -17,15 +17,26 @@ package net.magnusopu.gravityfields.item;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+
 public enum IOItemConfig {
     GRAVITY_ORE_TO_ESSENCE(new IOItem(MItems.gravityOre, MItems.gravityEssence, 150));
 
     private IOItem config;
 
-    private IOItemConfig(IOItem config){
+    /**
+     * A nice wrapper referencing IOItem configurations so I don't have to constalty write new IOItem()
+     *
+     * @param config The IOItem config in question
+     */
+    IOItemConfig(IOItem config){
         this.config = config;
     }
 
+    /**
+     * Gets the configuration of IOItem
+     *
+     * @return config
+     */
     public IOItem getConfig(){
         return config;
     }

@@ -48,9 +48,14 @@ import java.util.Random;
 public class Machine extends BlockContainer {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-    private static boolean hasTileEntity;
+    protected boolean hasTileEntity;
     protected static String name;
 
+    /**
+     * Default constructor for the Machine class, which is essentially a block with an inventory.
+     *
+     * @param name The unlocalized name of the machine.
+     */
     public Machine(String name){
         super(Material.ROCK);
         setUnlocalizedName(name);
@@ -71,16 +76,37 @@ public class Machine extends BlockContainer {
         GravityFields.proxy.registerItemRenderer(itemBlock, 0, name);
     }
 
+    /**
+     * Overrides getRenderType to set the rendertype as a custom render type.
+     *
+     * @param state The state of the block.
+     * @return An enum of the render type to set it to.
+     */
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state){
         return EnumBlockRenderType.MODEL;
     }
 
+    /**
+     * Sets the item to be dropped on destruction of this block.
+     *
+     * @param state The state of the block on destruction.
+     * @param ran A random number generator.
+     * @param fortune The current fortune level of the entity that destroyed the block.
+     * @return The item to be dropped.
+     */
     @Override
     public Item getItemDropped(IBlockState state, Random ran, int fortune){
         return Item.getItemFromBlock(MBlocks.gravityEssenceGenerator);
     }
 
+    /**
+     * Called when the block is placed in the world. Overriding this method to determine and set the block's direction on placement relevant to the player.
+     *
+     * @param worldIn The world the block was placed in.
+     * @param pos The pos the block was placed in.
+     * @param state The state the block will be placed in to.
+     */
     @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state){
         if (!worldIn.isRemote){
@@ -109,11 +135,15 @@ public class Machine extends BlockContainer {
         }
     }
 
+    /**
+     * Empty method stub.
+     */
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) { return null; }
 
     /**
-     * Gets the {@link IBlockState} to place
+     * Gets the state to set the block to be placed in the world. Overriding this method to set the direction the block is facing to be relevant to the player.
+     *
      * @param worldIn The world the block is being placed in
      * @param pos The position the block is being placed at
      * @param facing The side the block is being placed on
@@ -130,11 +160,27 @@ public class Machine extends BlockContainer {
         return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 
+    /**
+     * Called when the block is placed in the world. Overriding this method to set the direction the block is facing to be relevant to the player.
+     *
+     * @param worldIn The world the block is placed in.
+     * @param pos The pos the block is placed in.
+     * @param state The state the block is placed in.
+     * @param placer The entity that placed the block.
+     * @param stack The itemstack the block was placed from.
+     */
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack){
         worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()));
     }
 
+    /**
+     * Called on block destruction. Overriding this method to drop the tile entity's inventory of this block if it has a tile entity.
+     *
+     * @param worldIn The world the block was broken in.
+     * @param pos The pos the block was broken in.
+     * @param state The state of the block before it was broken.
+     */
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state){
         if(!hasTileEntity){
@@ -147,22 +193,49 @@ public class Machine extends BlockContainer {
         super.breakBlock(worldIn, pos, state);
     }
 
+    /**
+     * This method is called when an entity in creative mode tries to copy this block by clicking in the middle mouse button.
+     *
+     * @param state The state of the copied block.
+     * @param target The block found by using ray trace.
+     * @param world The world the block was copied in.
+     * @param pos The pos the block was copied from.
+     * @param player The player that copied the block.
+     * @return The itemstack to give the player
+     */
     @Override
     @SideOnly(Side.CLIENT)
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player){
-        return new ItemStack(Item.getItemFromBlock(MBlocks.gravityBlock));
+        return new ItemStack(Item.getItemFromBlock(this));
     }
 
+    /**
+     * Getting metadata from state. Overriding this method to alter the metadata to suit the block's direction.
+     *
+     * @param state The current state the block is in.
+     * @return The metadata value of the block
+     */
     @Override
     public int getMetaFromState(IBlockState state){
         return state.getValue(FACING).getIndex();
     }
 
+    /**
+     * Creates a block state of the block and returns it within a BlockStateContainer.
+     *
+     * @return A block state container holding a new blockstate of the block.
+     */
     @Override
     protected BlockStateContainer createBlockState(){
         return new BlockStateContainer(this, new IProperty[] {FACING});
     }
 
+    /**
+     * Returns the block state dependent on the metadata value.
+     *
+     * @param meta The meta to get the blockstate from.
+     * @return The blockstate of the block modified to suit the meta.
+     */
     @Override
     @Deprecated
     public IBlockState getStateFromMeta(int meta){
@@ -173,18 +246,38 @@ public class Machine extends BlockContainer {
         return getDefaultState().withProperty(FACING, enumFacing);
     }
 
+    /**
+     * Returns whether or not this block is an opaque cube.
+     *
+     * @param state The current state of the block.
+     * @return false
+     */
     @Override
     @Deprecated
     public boolean isOpaqueCube(IBlockState state){
         return false;
     }
 
+    /**
+     * Returns whether or not this block is a full cube.
+     *
+     * @param state The current state of the block.
+     * @return false
+     */
     @Override
     @Deprecated
     public boolean isFullCube(IBlockState state){
         return false;
     }
 
+    /**
+     * Determines whether or not the block in the direction the current block is facing is solid.
+     *
+     * @param worldIn The world the blocks are in.
+     * @param pos The pos of the current block.
+     * @param facing The direction the block is facing.
+     * @return true or false dependent on whether or not the block that pos is facing in direction facing is solid.
+     */
     public boolean isSolid(World worldIn, BlockPos pos, EnumFacing facing){
         BlockPos offset = pos.offset(facing);
         Block block = worldIn.getBlockState(offset).getBlock();

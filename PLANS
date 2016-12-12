@@ -1,2 +1,2 @@
-Current: Add comments everywhere, remove all "Ticking" classes and have their subclasses instead implement a new class called Tickable.
+Current: Add comments everywhere
 Next: Start building infrastructure for the gravity field generator.

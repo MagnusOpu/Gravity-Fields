@@ -22,6 +22,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MTileEntities {
 
+    /**
+     * Registers all Tile Entities for the mod Gravity Fields.
+     */
     public static void init(){
         GameRegistry.registerTileEntity(GEGTileEntity.class, "gravityEssenceGenerator");
     }

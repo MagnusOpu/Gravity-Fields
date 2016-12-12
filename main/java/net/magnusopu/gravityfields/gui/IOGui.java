@@ -35,6 +35,14 @@ public class IOGui extends GuiContainer {
     private InventoryPlayer inventoryPlayer;
     private IInventory tileBase;
 
+    /**
+     * IOGui is a class that extends GuiContainer mainly for showing a GUI that has a single input, performs some action on it then sends that into a single output slot.
+     *
+     * @param container The container for the gui to show.
+     * @param inventoryPlayer The inventory of the player to show.
+     * @param tileBase The TileEntity inventory to show.
+     * @param name The name of the gui resource location.
+     */
     public IOGui(Container container, InventoryPlayer inventoryPlayer, IInventory tileBase, String name){
         super(container);
 
@@ -44,6 +52,12 @@ public class IOGui extends GuiContainer {
         this.tileBase = tileBase;
     }
 
+    /**
+     * Draws the container's foreground layer.
+     *
+     * @param mouseX The current mouseX pos.
+     * @param mouseY The current mouseY pos.
+     */
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
         String s = tileBase.getDisplayName().getUnformattedText();
@@ -51,6 +65,13 @@ public class IOGui extends GuiContainer {
         fontRendererObj.drawString(inventoryPlayer.getDisplayName().getUnformattedText(), 8, ySize - 96 + 2, 4210752);
     }
 
+    /**
+     * Draws the container's background layer.
+     *
+     * @param partialTicks I don't actually know what this does.
+     * @param mouseX The current mouseX pos.
+     * @param mouseY The current mouseY pos.
+     */
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -63,6 +84,12 @@ public class IOGui extends GuiContainer {
         drawTexturedModalRect(marginHorizontal + 80, marginVertical + 35, xSize, 0, progressLevel, 16);
     }
 
+    /**
+     * Returns the current progress of whatever action is currently happening.
+     *
+     * @param progressIndicatorPixelWidth The length of the total progress bar.
+     * @return The amount of pixels of the progress bar to show.
+     */
     private int getProgressLevel(int progressIndicatorPixelWidth){
         int currentTicks = tileBase.getField(0);
         int currentTickMax = tileBase.getField(1);

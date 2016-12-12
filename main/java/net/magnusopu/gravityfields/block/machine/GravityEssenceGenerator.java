@@ -56,6 +56,7 @@ public class GravityEssenceGenerator extends Machine {
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         System.out.println("GravityEssenceGenerator createNewTileEntity()");
+        hasTileEntity = true;
         return new GEGTileEntity();
     }
 

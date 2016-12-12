@@ -28,11 +28,21 @@ import java.util.ArrayList;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+
 public class IOContainer extends TContainer {
 
     protected int inputSlot;
     protected int outputSlot;
 
+    /**
+     * IOContainer is a container extending TContainer that essentially has one input slot, performs some action on that input, then sends the result into an output slot.
+     *
+     * @param inventoryPlayer The inventory of the player who is interacting with the container.
+     * @param inventory The inventory of the container.
+     * @param inputIndex The input slot pos.
+     * @param outputIndex The output slot pos.
+     * @param inputItems The items valid for input and their corresponding output.
+     */
     public IOContainer(InventoryPlayer inventoryPlayer, IInventory inventory, int inputIndex, int outputIndex, IOItem... inputItems){
         super(inventoryPlayer, inventory);
         this.inputSlot = inputIndex;
@@ -42,6 +52,13 @@ public class IOContainer extends TContainer {
         addSlotToContainer(new OutputSlot(tileBase, outputIndex, 98, 35));
     }
 
+    /**
+     * Called when a player shift click's an item in the container's inventory.
+     *
+     * @param playerIn The player interacting with the inventory.
+     * @param slotIndex The slot pos that was shift clicked.
+     * @return null
+     */
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int slotIndex){
         Slot slot = inventorySlots.get(slotIndex);

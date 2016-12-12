@@ -29,10 +29,20 @@ public class TTileEntity extends TileEntityBase {
     protected int currentTicks = 0;
     private boolean isTicking = false;
 
+    /**
+     * TTileEntity is a class that adds ticking functionality and extends TileEntityBase
+     *
+     * @param itemStackArray The starting itemstacks in the inventory.
+     * @param name The name of the tile entity.
+     * @param guiID The ID string of the GUI to display.
+     */
     public TTileEntity(ItemStack[] itemStackArray, String name, String guiID){
         super(true, itemStackArray, name, guiID);
     }
 
+    /**
+     * Called on every tick, updates the current timer if it needs to be updated.
+     */
     @Override
     public void update(){
         boolean stateChanged = false;
@@ -58,6 +68,12 @@ public class TTileEntity extends TileEntityBase {
         }
     }
 
+    /**
+     * Sets the value of a field with given id
+     *
+     * @param id The id of the field to set
+     * @param value The value to set the field to
+     */
     @Override
     public void setField(int id, int value) {
         switch (id) {
@@ -72,6 +88,12 @@ public class TTileEntity extends TileEntityBase {
         }
     }
 
+    /**
+     * Gets the value of a field with given id
+     *
+     * @param id The field to get the value of
+     * @return The value of the field at id
+     */
     @Override
     public int getField(int id){
         switch(id){
@@ -84,17 +106,34 @@ public class TTileEntity extends TileEntityBase {
         }
     }
 
+    /**
+     * Gets the amount of fields
+     *
+     * @return The amount of fields
+     */
     @Override
     public int getFieldCount() {
         return 2;
     }
 
+    /**
+     * Called when someone interacts with the tile entity and creates a container to show them.
+     *
+     * @param playerInventory The inventory of the player interacting with the tile entity.
+     * @param playerIn The player interacting with the tile entity.
+     * @return The container created.
+     */
     @Override
     public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn){
         System.out.println("TileEntityBase createContainer()");
         return new TContainer(playerInventory, this);
     }
 
+    /**
+     * Determines if the tile entity is currently counting ticks
+     *
+     * @return Whether or not the tile entity is currently ticking
+     */
     public boolean isTicking(){
         return currentTicks != currentTickMax;
     }

@@ -23,6 +23,7 @@ import net.minecraft.item.ItemBlock;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+
 public class BlockBase extends Block {
 
     protected String name;

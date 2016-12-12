@@ -19,6 +19,7 @@ import net.minecraft.item.Item;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+
 public class DropStruct {
 
     private Item itemDropped;
