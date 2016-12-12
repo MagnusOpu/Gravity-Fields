@@ -42,20 +42,21 @@ public class IOTileEntity extends TTileEntity {
         this.allowedItems = allowedItems;
     }
 
-    @Override
+    /*@Override
     public void setInventorySlotContents(int index, ItemStack stack){
         boolean isSameStackAlreadyInSlot = stack != null && stack.isItemEqual(itemStackArray[index]) && ItemStack.areItemStackTagsEqual(stack, itemStackArray[index]);
         itemStackArray[index] = stack;
         if(stack != null && stack.stackSize > getInventoryStackLimit()){
             stack.stackSize = getInventoryStackLimit();
         }
+        String name = stack == null ? "Null?" : stack.getDisplayName();
 
         if(index == inputSlot && !isSameStackAlreadyInSlot && stack != null){
             currentTickMax = IOItem.findTicks(stack.getItem(), allowedItems);
             currentTicks = 0;
             markDirty();
         }
-    }
+    }*/
 
     @Override
     public void readFromNBT(NBTTagCompound compound){

@@ -3,7 +3,6 @@ package net.magnusopu.gravityfields.container;
 import net.magnusopu.gravityfields.item.IOItem;
 import net.magnusopu.gravityfields.slot.InputSlot;
 import net.magnusopu.gravityfields.slot.OutputSlot;
-import net.magnusopu.gravityfields.tileentity.IOTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
@@ -41,7 +40,7 @@ public class IOContainer extends TContainer {
         addSlotToContainer(new OutputSlot(tileBase, outputIndex, 98, 35));
     }
 
-    @Override
+    /**@Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int slotIndex){
         ItemStack itemStack1 = null;
         Slot slot = inventorySlots.get(slotIndex);
@@ -50,7 +49,12 @@ public class IOContainer extends TContainer {
             ItemStack itemStack2 = slot.getStack();
             itemStack1 = itemStack2.copy();
 
-            if(slotIndex == inputSlot){
+            if(slotIndex == outputSlot){
+                if(!mergeItemStack(itemStack2, sizeInventory, sizeInventory+36, true)){
+                    return null;
+                }
+                slot.onSlotChange(itemStack2, itemStack1);
+            } else if(slotIndex == inputSlot){
                 if(IOItem.validItem(itemStack2.getItem(), ((IOTileEntity)tileBase).getAllowedItems())){
                     if(!mergeItemStack(itemStack2, 0, 1, false)){
                         return null;
@@ -81,6 +85,17 @@ public class IOContainer extends TContainer {
         }
 
         return itemStack1;
+    }*/
+
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer playerIn, int slotIndex){
+        ItemStack stack1 = null;
+        Slot slot = inventorySlots.get(slotIndex);
+
+        if(slot != null && slot.getHasStack()){
+            
+        }
+        return null;
     }
 
 }

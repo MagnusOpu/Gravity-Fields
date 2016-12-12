@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
+
 public class OutputSlot extends Slot {
 
     public OutputSlot(IInventory inventory, int slotIndex, int xDisplayPos, int yDisplayPos){

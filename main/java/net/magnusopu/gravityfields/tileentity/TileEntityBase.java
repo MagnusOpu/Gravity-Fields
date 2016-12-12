@@ -139,7 +139,7 @@ public class TileEntityBase extends TileEntityLockable implements ITickable, ISi
     @Override
     public void setInventorySlotContents(int index, ItemStack stack){
         if(index < itemStackArray.length){
-            itemStackArray[index] = null;
+            itemStackArray[index] = stack;
         }
     }
 
