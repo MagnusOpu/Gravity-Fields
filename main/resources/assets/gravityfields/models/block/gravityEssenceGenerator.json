@@ -1,13 +1,13 @@
 {
   "parent": "block/orientable",
   "textures": {
-    "side": "gravityfields:blocks/gravityGenerator/gravityGeneratorSide",
-    "topside": "gravityfields:blocks/gravityGenerator/gravityGeneratorTopSide",
-    "topedgeside": "gravityfields:blocks/gravityGenerator/gravityGeneratorTopEdgeSide",
-    "other": "gravityfields:blocks/gravityGenerator/gravityGenerator",
-    "topother": "gravityfields:blocks/gravityGenerator/gravityGeneratorTop",
-    "topedgeother": "gravityfields:blocks/gravityGenerator/gravityGeneratorTopEdge",
-    "particle": "gravityfields:blocks/gravityGenerator/gravityGenerator"
+    "side": "gravityfields:blocks/gravityEssenceGenerator/gravityEssenceGeneratorSide",
+    "topside": "gravityfields:blocks/gravityEssenceGenerator/gravityEssenceGeneratorTopSide",
+    "topedgeside": "gravityfields:blocks/gravityEssenceGenerator/gravityEssenceGeneratorTopEdgeSide",
+    "other": "gravityfields:blocks/gravityEssenceGenerator/gravityEssenceGenerator",
+    "topother": "gravityfields:blocks/gravityEssenceGenerator/gravityEssenceGeneratorTop",
+    "topedgeother": "gravityfields:blocks/gravityEssenceGenerator/gravityEssenceGeneratorTopEdge",
+    "particle": "gravityfields:blocks/gravityEssenceGenerator/gravityEssenceGenerator"
   },
   "elements": [
     {

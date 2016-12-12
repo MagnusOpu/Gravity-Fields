@@ -1,11 +1,11 @@
 package net.magnusopu.gravityfields;
 
-import net.magnusopu.gravityfields.block.ModBlocks;
+import net.magnusopu.gravityfields.block.MBlocks;
 import net.magnusopu.gravityfields.client.GravityTab;
-import net.magnusopu.gravityfields.item.ModItems;
+import net.magnusopu.gravityfields.item.MItems;
 import net.magnusopu.gravityfields.proxy.CommonProxy;
-import net.magnusopu.gravityfields.recipe.ModRecipes;
-import net.magnusopu.gravityfields.tileentity.ModTileEntities;
+import net.magnusopu.gravityfields.recipe.MRecipes;
+import net.magnusopu.gravityfields.tileentity.MTileEntities;
 import net.magnusopu.gravityfields.world.ModWorldGenerator;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -54,10 +54,10 @@ public class GravityFields {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
         System.out.println(name + " is loading!");
-        ModItems.init();
-        ModBlocks.init();
-        ModRecipes.init();
-        ModTileEntities.init();
+        MItems.init();
+        MBlocks.init();
+        MRecipes.init();
+        MTileEntities.init();
         GameRegistry.registerWorldGenerator(new ModWorldGenerator(), 3);
     }
 

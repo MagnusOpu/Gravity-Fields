@@ -1,7 +1,7 @@
 package net.magnusopu.gravityfields.block.machine;
 
 import net.magnusopu.gravityfields.GravityFields;
-import net.magnusopu.gravityfields.block.ModBlocks;
+import net.magnusopu.gravityfields.block.MBlocks;
 import net.magnusopu.gravityfields.tileentity.TileEntityBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -78,7 +78,7 @@ public class Machine extends BlockContainer {
 
     @Override
     public Item getItemDropped(IBlockState state, Random ran, int fortune){
-        return Item.getItemFromBlock(ModBlocks.gravityGenerator);
+        return Item.getItemFromBlock(MBlocks.gravityEssenceGenerator);
     }
 
     @Override
@@ -150,7 +150,7 @@ public class Machine extends BlockContainer {
     @Override
     @SideOnly(Side.CLIENT)
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player){
-        return new ItemStack(Item.getItemFromBlock(ModBlocks.gravityBlock));
+        return new ItemStack(Item.getItemFromBlock(MBlocks.gravityBlock));
     }
 
     @Override

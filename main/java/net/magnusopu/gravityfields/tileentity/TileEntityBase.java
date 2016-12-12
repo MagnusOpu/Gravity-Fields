@@ -87,7 +87,7 @@ public class TileEntityBase extends TileEntityLockable implements ITickable, ISi
 
     @Override
     public String getName() {
-        return hasCustomName() ? name : "container.gravityGenerator";
+        return name;
     }
 
     @Override
@@ -99,7 +99,6 @@ public class TileEntityBase extends TileEntityLockable implements ITickable, ISi
     public int getInventoryStackLimit() {
         return 64;
     }
-
 
     @Override
     public String getGuiID(){
@@ -130,6 +129,7 @@ public class TileEntityBase extends TileEntityLockable implements ITickable, ISi
     @Override
     public ItemStack removeStackFromSlot(int index){
         if(index < itemStackArray.length){
+            itemStackArray[index] = null;
             return itemStackArray[index];
         }
 

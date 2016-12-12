@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  * Contact me at zacharydsturtz@gmail.com
  */
 
-public final class ModItems {
+public final class MItems {
 
     public static ItemBase gravityOre;
     public static ItemBase gravityEssence;

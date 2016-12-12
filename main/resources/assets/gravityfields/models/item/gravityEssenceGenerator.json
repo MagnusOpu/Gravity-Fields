@@ -1,5 +1,5 @@
 {
-  "parent": "gravityfields:block/gravityGenerator",
+  "parent": "gravityfields:block/gravityEssenceGenerator",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],

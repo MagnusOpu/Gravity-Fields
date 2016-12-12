@@ -1,6 +1,6 @@
 package net.magnusopu.gravityfields.tileentity;
 
-import net.magnusopu.gravityfields.container.ContainerTicking;
+import net.magnusopu.gravityfields.container.TContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -23,13 +23,13 @@ import net.minecraft.item.ItemStack;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
-public class TileEntityTicking extends TileEntityBase {
+public class TTileEntity extends TileEntityBase {
 
     protected int currentTickMax = 0;
     protected int currentTicks = 0;
     private boolean isTicking = false;
 
-    public TileEntityTicking(ItemStack[] itemStackArray, String name, String guiID){
+    public TTileEntity(ItemStack[] itemStackArray, String name, String guiID){
         super(true, itemStackArray, name, guiID);
     }
 
@@ -92,7 +92,7 @@ public class TileEntityTicking extends TileEntityBase {
     @Override
     public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn){
         System.out.println("TileEntityBase createContainer()");
-        return new ContainerTicking(playerInventory, this);
+        return new TContainer(playerInventory, this);
     }
 
     public boolean isTicking(){

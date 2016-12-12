@@ -1,6 +1,6 @@
 package net.magnusopu.gravityfields.world;
 
-import net.magnusopu.gravityfields.block.ModBlocks;
+import net.magnusopu.gravityfields.block.MBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -58,7 +58,7 @@ public class ModWorldGenerator implements IWorldGenerator {
      * @param chunkProvider The class that provides chunks
      */
     public void generateOverworld(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider){
-        generateOre(ModBlocks.gravityOreBlock.getDefaultState(), world, random, chunkX * 16, chunkZ * 16, 16, 64, 2 + random.nextInt(3), 3);
+        generateOre(MBlocks.gravityOreBlock.getDefaultState(), world, random, chunkX * 16, chunkZ * 16, 16, 64, 2 + random.nextInt(3), 3);
     }
 
     /**

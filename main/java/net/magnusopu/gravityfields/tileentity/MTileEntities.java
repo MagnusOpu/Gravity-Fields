@@ -1,8 +1,6 @@
-package net.magnusopu.gravityfields.container;
+package net.magnusopu.gravityfields.tileentity;
 
-import net.magnusopu.gravityfields.slot.GravityGeneratorSlot;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Copyright (C) 2016 MagnusOpu.
@@ -22,10 +20,10 @@ import net.minecraft.inventory.IInventory;
  * Contact me at zacharydsturtz@gmail.com
  */
 
-public class ContainerGravityGenerator extends ContainerSingleInput {
+public class MTileEntities {
 
-    public ContainerGravityGenerator(InventoryPlayer inventoryPlayer, IInventory inventory, int input){
-        super(inventoryPlayer, inventory, input, false);
-        addSlotToContainer(new GravityGeneratorSlot(tileBase, input, 80, 35));
+    public static void init(){
+        GameRegistry.registerTileEntity(GEGTileEntity.class, "tileEntityGravityEssenceGenerator");
     }
+
 }

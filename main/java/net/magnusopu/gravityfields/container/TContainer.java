@@ -21,12 +21,12 @@ import net.minecraft.inventory.IInventory;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
-public class ContainerTicking extends ContainerBase {
+public class TContainer extends ContainerBase {
 
     protected int currentTicks;
     protected int currentTickMax;
 
-    public ContainerTicking(InventoryPlayer inventoryPlayer, IInventory inventory){
+    public TContainer(InventoryPlayer inventoryPlayer, IInventory inventory){
         super(inventoryPlayer, inventory);
     }
 

@@ -1,8 +1,7 @@
 GRAVITY FIELDS -- ENTRY 001
 	SUMMARY
 		ITEMS
-			GRAVITY MACHINE
-			GRAVITY PIPE
+			GRAVITY ESSENCE GENERATOR
 			GRAVITY FIELD GENERATOR
 			GRAVITY BLOCK
 			GRAVITY STRENGTH STONE
@@ -15,7 +14,7 @@ GRAVITY FIELDS -- ENTRY 001
 	
 	ITEM IDEAS
 	
-		GRAVITY MACHINE
+		GRAVITY ESSENCE GENERATOR
 			INTRODUCTION
 				This machine will be the core of the mod, generating gravity essence by consuming gravity ore.
 			RECIPE
@@ -27,21 +26,10 @@ GRAVITY FIELDS -- ENTRY 001
 				Where B = Gravity Block
 			POWERED WITH
 				Gravity Ore
-				
-		GRAVITY PIPE
-			INTRODUCTION
-				Channels generated gravity along pipes to move it from one place to another.
-			RECIPE
-				I G I
-				| | |
-				| | |
-				Where I = Iron Ingot
-				Where G = Gravity Ore
-				Amount Crafted: 6
 
 		GRAVITY BLOCK
 			INTRODUCTION
-				Block constructed out of Gravity Ore. Used in construction of Gravity Machine.
+				Block constructed out of Gravity Ore. Used in construction of Gravity Essence Generator.
 			RECIPE
 				G G |
 				G G |

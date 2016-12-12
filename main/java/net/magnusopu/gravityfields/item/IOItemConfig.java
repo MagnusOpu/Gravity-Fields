@@ -1,6 +1,4 @@
-package net.magnusopu.gravityfields.tileentity;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
+package net.magnusopu.gravityfields.item;
 
 /**
  * Copyright (C) 2016 MagnusOpu.
@@ -19,10 +17,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
-public class ModTileEntities {
+public enum IOItemConfig {
+    GRAVITY_ORE_TO_ESSENCE(new IOItem(MItems.gravityOre, MItems.gravityEssence, 150));
 
-    public static void init(){
-        GameRegistry.registerTileEntity(TileEntityGravityGenerator.class, "tileEntityGravityMachine");
+    private IOItem config;
+
+    private IOItemConfig(IOItem config){
+        this.config = config;
     }
 
+    public IOItem getConfig(){
+        return config;
+    }
 }

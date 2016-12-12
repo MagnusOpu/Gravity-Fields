@@ -1,7 +1,8 @@
 package net.magnusopu.gravityfields.recipe;
 
-import net.magnusopu.gravityfields.block.ModBlocks;
-import net.magnusopu.gravityfields.item.ModItems;
+import net.magnusopu.gravityfields.block.MBlocks;
+import net.magnusopu.gravityfields.item.MItems;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -22,14 +23,19 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
-public class ModRecipes {
+
+public class MRecipes {
 
     /**
      * Initializing all recipes for the mod Gravity Fields.
      */
     public static void init(){
         // Adding recipe for Gravity Block
-        GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.gravityBlock), ModItems.gravityOre, ModItems.gravityOre, ModItems.gravityOre, ModItems.gravityOre);
+        GameRegistry.addShapedRecipe(new ItemStack(MBlocks.gravityBlock), "GG", "GG", 'G', MItems.gravityOre);
+        GameRegistry.addShapedRecipe(new ItemStack(MBlocks.gravityEssenceGenerator),  "GIG",
+                                                                                                "IBI",
+                                                                                                "GIG",
+                                                                    'G', Blocks.GLASS, 'I', Blocks.IRON_BLOCK, 'B', MBlocks.gravityBlock);
     }
 
 }

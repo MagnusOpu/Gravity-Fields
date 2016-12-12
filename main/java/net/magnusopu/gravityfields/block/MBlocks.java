@@ -2,7 +2,7 @@ package net.magnusopu.gravityfields.block;
 
 import net.magnusopu.gravityfields.block.machine.GravityGenerator;
 import net.magnusopu.gravityfields.block.machine.Machine;
-import net.magnusopu.gravityfields.item.ModItems;
+import net.magnusopu.gravityfields.item.MItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
@@ -27,11 +27,11 @@ import java.util.ArrayList;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
-public class ModBlocks {
+public class MBlocks {
 
     public static BlockBase gravityBlock;
     public static BlockOre gravityOreBlock;
-    public static GravityGenerator gravityGenerator;
+    public static GravityGenerator gravityEssenceGenerator;
 
     /**
      * Initializes all registered blocks for the Gravity Fields mod.
@@ -41,12 +41,12 @@ public class ModBlocks {
 
         ArrayList<DropStruct> gravityOreDrops = new ArrayList<DropStruct>();
             // Adding drops for gravityOre
-            gravityOreDrops.add(new DropStruct(ModItems.gravityOre, 1, 4, 100));
-            gravityOreDrops.add(new DropStruct(ModItems.gravityRangeStone, 1, 1, 10));
-            gravityOreDrops.add(new DropStruct(ModItems.gravityStrengthStone, 1, 1, 10));
+            gravityOreDrops.add(new DropStruct(MItems.gravityOre, 1, 4, 100));
+            gravityOreDrops.add(new DropStruct(MItems.gravityRangeStone, 1, 1, 10));
+            gravityOreDrops.add(new DropStruct(MItems.gravityStrengthStone, 1, 1, 10));
         gravityOreBlock = register(new BlockOre("gravityOreBlock", gravityOreDrops));
 
-        gravityGenerator = register(new GravityGenerator());
+        gravityEssenceGenerator = register(new GravityGenerator());
     }
 
     /**

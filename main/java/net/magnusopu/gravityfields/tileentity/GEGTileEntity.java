@@ -1,6 +1,7 @@
 package net.magnusopu.gravityfields.tileentity;
 
-import net.magnusopu.gravityfields.item.ModItems;
+import net.magnusopu.gravityfields.item.IOItem;
+import net.magnusopu.gravityfields.item.MItems;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -21,12 +22,10 @@ import net.minecraft.item.ItemStack;
  * Contact me at zacharydsturtz@gmail.com
  */
 
-public class TileEntityGravityGenerator extends TileEntitySingleInput {
+public class GEGTileEntity extends IOTileEntity {
 
-    private ItemTick[] tickableItems = {new ItemTick(ModItems.gravityOre, 150)};
-
-    public TileEntityGravityGenerator(){
-        super(new ItemStack[1], "gravityGenerator", 0, "gravityGenerator", new ItemTick(ModItems.gravityOre, 150));
+    public GEGTileEntity(){
+        super(new ItemStack[2], "gravityEssenceGenerator", 0, 1, "gravityEssenceGenerator", new IOItem(MItems.gravityOre, MItems.gravityEssence, 150));
     }
 
 }

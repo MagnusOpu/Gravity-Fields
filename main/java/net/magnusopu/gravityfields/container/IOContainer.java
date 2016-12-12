@@ -1,7 +1,9 @@
 package net.magnusopu.gravityfields.container;
 
-import net.magnusopu.gravityfields.tileentity.ItemTick;
-import net.magnusopu.gravityfields.tileentity.TileEntitySingleInput;
+import net.magnusopu.gravityfields.item.IOItem;
+import net.magnusopu.gravityfields.slot.InputSlot;
+import net.magnusopu.gravityfields.slot.OutputSlot;
+import net.magnusopu.gravityfields.tileentity.IOTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
@@ -25,26 +27,18 @@ import net.minecraft.item.ItemStack;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
-public class ContainerSingleInput extends ContainerTicking {
+public class IOContainer extends TContainer {
 
     protected int inputSlot;
+    protected int outputSlot;
 
-    public ContainerSingleInput(InventoryPlayer inventoryPlayer, IInventory inventory, int input, boolean shouldAddSlot){
+    public IOContainer(InventoryPlayer inventoryPlayer, IInventory inventory, int inputIndex, int outputIndex, IOItem... inputItems){
         super(inventoryPlayer, inventory);
+        this.inputSlot = inputIndex;
+        this.outputSlot = outputIndex;
 
-        this.inputSlot = input;
-
-        if(shouldAddSlot) {
-            addSlotToContainer(new Slot(tileBase, input, 56, 53));
-        }
-    }
-
-    public ContainerSingleInput(InventoryPlayer inventoryPlayer, IInventory inventory, int input){
-        super(inventoryPlayer, inventory);
-
-        this.inputSlot = input;
-
-        addSlotToContainer(new Slot(tileBase, input, 56, 53));
+        addSlotToContainer(new InputSlot(tileBase, inputIndex, 62, 35, inputItems));
+        addSlotToContainer(new OutputSlot(tileBase, outputIndex, 98, 35));
     }
 
     @Override
@@ -57,7 +51,7 @@ public class ContainerSingleInput extends ContainerTicking {
             itemStack1 = itemStack2.copy();
 
             if(slotIndex == inputSlot){
-                if(ItemTick.validItem(itemStack2.getItem(), ((TileEntitySingleInput)tileBase).getTickableItems())){
+                if(IOItem.validItem(itemStack2.getItem(), ((IOTileEntity)tileBase).getAllowedItems())){
                     if(!mergeItemStack(itemStack2, 0, 1, false)){
                         return null;
                     }

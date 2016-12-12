@@ -29,13 +29,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 
 @SideOnly(Side.CLIENT)
-public class GuiGravityGenerator extends GuiContainer {
+public class GEGGui extends GuiContainer {
 
     private ResourceLocation guiTextures;
     private InventoryPlayer inventoryPlayer;
     private IInventory tileBase;
 
-    public GuiGravityGenerator(Container container, InventoryPlayer inventoryPlayer, IInventory tileBase, String name){
+    public GEGGui(Container container, InventoryPlayer inventoryPlayer, IInventory tileBase, String name){
         super(container);
 
         guiTextures = new ResourceLocation(GravityFields.modId + ":textures/gui/container/"+name+".png");
@@ -59,8 +59,8 @@ public class GuiGravityGenerator extends GuiContainer {
         int marginVertical = (height - ySize) / 2;
         drawTexturedModalRect(marginHorizontal, marginVertical, 0, 0, xSize, ySize);
 
-        int progressLevel = getProgressLevel(24);
-        drawTexturedModalRect(marginHorizontal + 79, marginVertical + 34, 176, 14, progressLevel + 1, 16);
+        int progressLevel = getProgressLevel(18);
+        drawTexturedModalRect(marginHorizontal + 80, marginVertical + 35, xSize, 0, progressLevel, 16);
     }
 
     private int getProgressLevel(int progressIndicatorPixelWidth){

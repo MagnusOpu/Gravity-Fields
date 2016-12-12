@@ -1,7 +1,7 @@
 package net.magnusopu.gravityfields.client;
 
 import net.magnusopu.gravityfields.GravityFields;
-import net.magnusopu.gravityfields.item.ModItems;
+import net.magnusopu.gravityfields.item.MItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -39,7 +39,7 @@ public class GravityTab extends CreativeTabs {
      */
     @Override
     public Item getTabIconItem() {
-        return ModItems.gravityRangeStone;
+        return MItems.gravityRangeStone;
     }
 
     /**

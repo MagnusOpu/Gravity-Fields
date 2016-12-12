@@ -1,8 +1,9 @@
 package net.magnusopu.gravityfields.gui;
 
-import net.magnusopu.gravityfields.container.ContainerGravityGenerator;
+import net.magnusopu.gravityfields.container.IOContainer;
+import net.magnusopu.gravityfields.item.IOItemConfig;
 import net.magnusopu.gravityfields.tileentity.TileEntityBase;
-import net.magnusopu.gravityfields.tileentity.TileEntityGravityGenerator;
+import net.magnusopu.gravityfields.tileentity.GEGTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -34,8 +35,8 @@ public class GuiHandler implements IGuiHandler {
 
         if(tileEntity != null){
             if(ID == EnumGUI.GRAVITY_GENERATOR.ordinal()){
-                TileEntityGravityGenerator tileEntityG = (TileEntityGravityGenerator)tileEntity;
-                return new ContainerGravityGenerator(player.inventory, tileEntityG, tileEntityG.getInputSlot());
+                GEGTileEntity tileEntityG = (GEGTileEntity)tileEntity;
+                return new IOContainer(player.inventory, tileEntityG, tileEntityG.getInputSlot(), tileEntityG.getOutputSlot(), IOItemConfig.GRAVITY_ORE_TO_ESSENCE.getConfig());
             }
             // TODO: Add remaining ID recognition on opening GUI
         }
@@ -49,11 +50,10 @@ public class GuiHandler implements IGuiHandler {
 
         if(tileEntity != null){
             if(tileEntity instanceof TileEntityBase) {
-                TileEntityBase tileEntityB = (TileEntityBase)tileEntity;
                 if (ID == EnumGUI.GRAVITY_GENERATOR.ordinal()) {
-                    if(tileEntity instanceof TileEntityGravityGenerator){
-                        TileEntityGravityGenerator tileEntityG = (TileEntityGravityGenerator)tileEntity;
-                        return new GuiGravityGenerator(new ContainerGravityGenerator(player.inventory, tileEntityG, tileEntityG.getInputSlot()), player.inventory, tileEntityG, tileEntityG.getName());
+                    if(tileEntity instanceof GEGTileEntity){
+                        GEGTileEntity tileEntityG = (GEGTileEntity)tileEntity;
+                        return new GEGGui(new IOContainer(player.inventory, tileEntityG, tileEntityG.getInputSlot(), tileEntityG.getOutputSlot(), IOItemConfig.GRAVITY_ORE_TO_ESSENCE.getConfig()), player.inventory, tileEntityG, tileEntityG.getName());
                     }
                 }
                 // TODO: Add remaining ID recognition on opening GUI

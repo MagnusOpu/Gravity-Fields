@@ -1,6 +1,5 @@
 package net.magnusopu.gravityfields.slot;
 
-import net.magnusopu.gravityfields.item.ModItems;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -22,15 +21,15 @@ import net.minecraft.item.ItemStack;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
-public class GravityGeneratorSlot extends Slot {
+public class OutputSlot extends Slot {
 
-    public GravityGeneratorSlot(IInventory inventory, int slotIndex, int xDisplayPos, int yDisplayPos){
+    public OutputSlot(IInventory inventory, int slotIndex, int xDisplayPos, int yDisplayPos){
         super(inventory, slotIndex, xDisplayPos, yDisplayPos);
     }
 
     @Override
     public boolean isItemValid(ItemStack stack){
-        return stack.getItem() == ModItems.gravityOre;
+        return false;
     }
 
 }

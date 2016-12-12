@@ -1,6 +1,7 @@
 package net.magnusopu.gravityfields.tileentity;
 
-import net.magnusopu.gravityfields.container.ContainerSingleInput;
+import net.magnusopu.gravityfields.container.IOContainer;
+import net.magnusopu.gravityfields.item.IOItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -25,18 +26,20 @@ import net.minecraft.nbt.NBTTagList;
  * <p>
  * Contact me at zacharydsturtz@gmail.com
  */
-public class TileEntitySingleInput extends TileEntityTicking {
+
+public class IOTileEntity extends TTileEntity {
 
     protected int inputSlot = 0;
-    //protected boolean cookingSomething = false;
-    protected ItemTick[] tickableItems;
+    protected int outputSlot = 1;
+    protected IOItem[] allowedItems;
 
-    public TileEntitySingleInput(ItemStack[] itemStackArray, String name, int inputSlot, String guiID, ItemTick... tickableItems){
+    public IOTileEntity(ItemStack[] itemStackArray, String name, int inputSlot, int outputSlot, String guiID, IOItem... allowedItems){
         super(itemStackArray, name, guiID);
         if(inputSlot < itemStackArray.length){
             this.inputSlot = inputSlot;
+            this.outputSlot = outputSlot;
         }
-        this.tickableItems = tickableItems;
+        this.allowedItems = allowedItems;
     }
 
     @Override
@@ -48,7 +51,7 @@ public class TileEntitySingleInput extends TileEntityTicking {
         }
 
         if(index == inputSlot && !isSameStackAlreadyInSlot && stack != null){
-            currentTickMax = ItemTick.findTicksOfItem(stack, tickableItems);
+            currentTickMax = IOItem.findTicks(stack.getItem(), allowedItems);
             currentTicks = 0;
             markDirty();
         }
@@ -108,28 +111,62 @@ public class TileEntitySingleInput extends TileEntityTicking {
     @Override
     public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn){
         System.out.println("TileEntityBase createContainer()");
-        return new ContainerSingleInput(playerInventory, this, inputSlot);
+        return new IOContainer(playerInventory, this, inputSlot, outputSlot, allowedItems);
     }
 
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack){
-        return index == inputSlot ? ItemTick.validItem(stack, tickableItems) : true;
+        return index == inputSlot ? IOItem.validInput(stack.getItem(), allowedItems) : true;
     }
 
     @Override
     public void update(){
         if(!worldObj.isRemote) {
             if (itemStackArray[inputSlot] != null) {
-                //      if()
+                currentTickMax = IOItem.findTicks(itemStackArray[inputSlot].getItem(), allowedItems);
+                boolean outputMatchesInput = false;
+                boolean willOverflow = false;
+                if(itemStackArray[outputSlot] != null) {
+                    outputMatchesInput = (itemStackArray[outputSlot].getItem() == IOItem.getOutputFromInput(itemStackArray[inputSlot].getItem(), allowedItems));
+                    if(outputMatchesInput) {
+                        willOverflow = (IOItem.getOutputAmountFromInput(itemStackArray[inputSlot].getItem(), allowedItems)
+                                        + itemStackArray[outputSlot].stackSize
+                                        > itemStackArray[outputSlot].getMaxStackSize());
+                    }
+                }
+                if(itemStackArray[outputSlot] == null || (outputMatchesInput && !willOverflow)){
+                    currentTicks++;
+                    if (currentTicks >= currentTickMax) {
+                        currentTicks = 0;
+                        if(itemStackArray[outputSlot] != null){
+                            itemStackArray[outputSlot].stackSize += IOItem.getOutputAmountFromInput(itemStackArray[inputSlot].getItem(), allowedItems);
+                        } else {
+                            itemStackArray[outputSlot] = new ItemStack(IOItem.getOutputFromInput(itemStackArray[inputSlot].getItem(), allowedItems),
+                                                                        IOItem.getOutputAmountFromInput(itemStackArray[inputSlot].getItem(), allowedItems));
+                        }
+                        if(itemStackArray[inputSlot].stackSize == 1){
+                            itemStackArray[inputSlot] = null;
+                        } else {
+                            itemStackArray[inputSlot].stackSize--;
+                        }
+                    }
+                }
+            } else {
+                currentTicks = 0;
+                currentTickMax = 0;
             }
         }
     }
 
-    public ItemTick[] getTickableItems() {
-        return tickableItems;
+    public IOItem[] getAllowedItems() {
+        return allowedItems;
     }
 
     public int getInputSlot(){
         return inputSlot;
+    }
+
+    public int getOutputSlot(){
+        return outputSlot;
     }
 }

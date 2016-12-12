@@ -1,0 +1,7 @@
+IO      --      Single Input Output             --      Classes that have a single input slot with a single output slot, typically extending a class that Ticks
+
+T       --      Ticking                         --      Classes that have some sort of ticking functionality
+
+GEG     --      Gravity Essence Generator       --      Classes to do with the gravity essence generator block
+
+M       --      Mod                             --      Classes involved in loading classes during pre init and init phases

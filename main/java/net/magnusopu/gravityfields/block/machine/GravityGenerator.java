@@ -2,7 +2,7 @@ package net.magnusopu.gravityfields.block.machine;
 
 import net.magnusopu.gravityfields.GravityFields;
 import net.magnusopu.gravityfields.gui.EnumGUI;
-import net.magnusopu.gravityfields.tileentity.TileEntityGravityGenerator;
+import net.magnusopu.gravityfields.tileentity.GEGTileEntity;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
 public class GravityGenerator extends Machine {
 
     public GravityGenerator(){
-        super("gravityGenerator");
+        super("gravityEssenceGenerator");
     }
 
     /**
@@ -56,7 +56,7 @@ public class GravityGenerator extends Machine {
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         System.out.println("GravityGenerator createNewTileEntity()");
-        return new TileEntityGravityGenerator();
+        return new GEGTileEntity();
     }
 
 }
