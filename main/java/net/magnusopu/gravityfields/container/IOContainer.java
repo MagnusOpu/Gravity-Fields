@@ -9,6 +9,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+import java.util.ArrayList;
+
 /**
  * Copyright (C) 2016 MagnusOpu.
  * This program is free software: you can redistribute it and/or modify
@@ -40,60 +42,38 @@ public class IOContainer extends TContainer {
         addSlotToContainer(new OutputSlot(tileBase, outputIndex, 98, 35));
     }
 
-    /**@Override
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int slotIndex){
-        ItemStack itemStack1 = null;
-        Slot slot = inventorySlots.get(slotIndex);
-
-        if(slot != null && slot.getHasStack()){
-            ItemStack itemStack2 = slot.getStack();
-            itemStack1 = itemStack2.copy();
-
-            if(slotIndex == outputSlot){
-                if(!mergeItemStack(itemStack2, sizeInventory, sizeInventory+36, true)){
-                    return null;
-                }
-                slot.onSlotChange(itemStack2, itemStack1);
-            } else if(slotIndex == inputSlot){
-                if(IOItem.validItem(itemStack2.getItem(), ((IOTileEntity)tileBase).getAllowedItems())){
-                    if(!mergeItemStack(itemStack2, 0, 1, false)){
-                        return null;
-                    }
-                } else if(slotIndex >= sizeInventory && slotIndex < sizeInventory+27){
-                    if(!mergeItemStack(itemStack2, sizeInventory+27, sizeInventory+36, false)){
-                        return null;
-                    }
-                } else if(slotIndex >= sizeInventory+27 && slotIndex < sizeInventory+36 &&
-                        !mergeItemStack(itemStack2, sizeInventory+1, sizeInventory+27, false)){
-                    return null;
-                }
-            } else if(!mergeItemStack(itemStack2, sizeInventory, sizeInventory+36, false)){
-                return null;
-            }
-
-            if(itemStack2.stackSize == 0){
-                slot.putStack(null);
-            } else {
-                slot.onSlotChanged();
-            }
-
-            if(itemStack2.stackSize == itemStack1.stackSize){
-                return null;
-            }
-
-            slot.onPickupFromSlot(playerIn, itemStack2);
-        }
-
-        return itemStack1;
-    }*/
-
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int slotIndex){
-        ItemStack stack1 = null;
         Slot slot = inventorySlots.get(slotIndex);
+        Slot firstEmptySlot = null;
+        ItemStack stack1 = null;
+        ArrayList<ItemStack> stack2 = new ArrayList<ItemStack>();
+        boolean itemAlreadyExists = false;
 
         if(slot != null && slot.getHasStack()){
-            
+            stack1 = slot.getStack();
+
+            for(int i=0;i<getInventory().size();i++){
+                ItemStack s = getInventory().get(i);
+                if(s != null) {
+                    if (s.getItem() == stack1.getItem()) {
+                        stack2.add(s);
+                        itemAlreadyExists = true;
+                    }
+                } else {
+                    if(firstEmptySlot == null){
+                        firstEmptySlot = inventorySlots.get(i);
+                    }
+                }
+            }
+
+            if(itemAlreadyExists){
+                slot.putStack(null);
+                mergeItemStack(stack1, sizeInventory, sizeInventory+36, false);
+            } else if(firstEmptySlot != null){
+                slot.putStack(null);
+                firstEmptySlot.putStack(stack1);
+            }
         }
         return null;
     }
