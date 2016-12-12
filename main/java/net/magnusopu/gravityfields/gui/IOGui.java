@@ -29,13 +29,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 
 @SideOnly(Side.CLIENT)
-public class GEGGui extends GuiContainer {
+public class IOGui extends GuiContainer {
 
     private ResourceLocation guiTextures;
     private InventoryPlayer inventoryPlayer;
     private IInventory tileBase;
 
-    public GEGGui(Container container, InventoryPlayer inventoryPlayer, IInventory tileBase, String name){
+    public IOGui(Container container, InventoryPlayer inventoryPlayer, IInventory tileBase, String name){
         super(container);
 
         guiTextures = new ResourceLocation(GravityFields.modId + ":textures/gui/container/"+name+".png");

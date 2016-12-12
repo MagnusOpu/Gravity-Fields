@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class MTileEntities {
 
     public static void init(){
-        GameRegistry.registerTileEntity(GEGTileEntity.class, "tileEntityGravityEssenceGenerator");
+        GameRegistry.registerTileEntity(GEGTileEntity.class, "gravityEssenceGenerator");
     }
 
 }

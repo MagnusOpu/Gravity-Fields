@@ -1,6 +1,6 @@
 package net.magnusopu.gravityfields.block;
 
-import net.magnusopu.gravityfields.block.machine.GravityGenerator;
+import net.magnusopu.gravityfields.block.machine.GravityEssenceGenerator;
 import net.magnusopu.gravityfields.block.machine.Machine;
 import net.magnusopu.gravityfields.item.MItems;
 import net.minecraft.block.Block;
@@ -31,7 +31,7 @@ public class MBlocks {
 
     public static BlockBase gravityBlock;
     public static BlockOre gravityOreBlock;
-    public static GravityGenerator gravityEssenceGenerator;
+    public static GravityEssenceGenerator gravityEssenceGenerator;
 
     /**
      * Initializes all registered blocks for the Gravity Fields mod.
@@ -46,7 +46,7 @@ public class MBlocks {
             gravityOreDrops.add(new DropStruct(MItems.gravityStrengthStone, 1, 1, 10));
         gravityOreBlock = register(new BlockOre("gravityOreBlock", gravityOreDrops));
 
-        gravityEssenceGenerator = register(new GravityGenerator());
+        gravityEssenceGenerator = register(new GravityEssenceGenerator());
     }
 
     /**

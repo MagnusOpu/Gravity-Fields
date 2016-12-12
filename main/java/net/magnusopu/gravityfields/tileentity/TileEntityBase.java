@@ -87,12 +87,16 @@ public class TileEntityBase extends TileEntityLockable implements ITickable, ISi
 
     @Override
     public String getName() {
-        return name;
+        return "container."+name;
+    }
+
+    public String getGuiIDUnlocalized(){
+        return guiID;
     }
 
     @Override
     public boolean hasCustomName() {
-        return name != null && name.length() > 0;
+        return false;
     }
 
     @Override

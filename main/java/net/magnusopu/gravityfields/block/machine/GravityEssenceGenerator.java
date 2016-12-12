@@ -32,9 +32,9 @@ import javax.annotation.Nullable;
  * Contact me at zacharydsturtz@gmail.com
  */
 
-public class GravityGenerator extends Machine {
+public class GravityEssenceGenerator extends Machine {
 
-    public GravityGenerator(){
+    public GravityEssenceGenerator(){
         super("gravityEssenceGenerator");
     }
 
@@ -55,7 +55,7 @@ public class GravityGenerator extends Machine {
      */
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        System.out.println("GravityGenerator createNewTileEntity()");
+        System.out.println("GravityEssenceGenerator createNewTileEntity()");
         return new GEGTileEntity();
     }
 

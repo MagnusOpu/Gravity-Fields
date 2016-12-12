@@ -53,7 +53,7 @@ public class GuiHandler implements IGuiHandler {
                 if (ID == EnumGUI.GRAVITY_GENERATOR.ordinal()) {
                     if(tileEntity instanceof GEGTileEntity){
                         GEGTileEntity tileEntityG = (GEGTileEntity)tileEntity;
-                        return new GEGGui(new IOContainer(player.inventory, tileEntityG, tileEntityG.getInputSlot(), tileEntityG.getOutputSlot(), IOItemConfig.GRAVITY_ORE_TO_ESSENCE.getConfig()), player.inventory, tileEntityG, tileEntityG.getName());
+                        return new IOGui(new IOContainer(player.inventory, tileEntityG, tileEntityG.getInputSlot(), tileEntityG.getOutputSlot(), IOItemConfig.GRAVITY_ORE_TO_ESSENCE.getConfig()), player.inventory, tileEntityG, tileEntityG.getGuiIDUnlocalized());
                     }
                 }
                 // TODO: Add remaining ID recognition on opening GUI

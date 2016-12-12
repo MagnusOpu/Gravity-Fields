@@ -111,7 +111,7 @@ public class IOTileEntity extends TTileEntity {
 
     @Override
     public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn){
-        System.out.println("TileEntityBase createContainer()");
+        System.out.println("IOEntityBase createContainer()");
         return new IOContainer(playerInventory, this, inputSlot, outputSlot, allowedItems);
     }
 
