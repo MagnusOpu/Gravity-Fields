@@ -53,7 +53,7 @@ public class IOContainer extends TContainer {
     }
 
     /**
-     * Called when a player shift mouseInput's an item in the container's inventory.
+     * Called when a player shift click's an item in the container's inventory.
      *
      * @param playerIn The player interacting with the inventory.
      * @param slotIndex The slot pos that was shift clicked.
