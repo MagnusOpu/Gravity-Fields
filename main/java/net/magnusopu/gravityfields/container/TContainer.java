@@ -46,17 +46,17 @@ public class TContainer extends ContainerBase {
         for(int i=0;i<listeners.size(); i++){
             IContainerListener iListener = (IContainerListener)listeners.get(i);
 
-            if(currentTicks != tileBase.getField(0)){
-                iListener.sendProgressBarUpdate(this, 0, tileBase.getField(0));
+            if(currentTicks != inv.getField(0)){
+                iListener.sendProgressBarUpdate(this, 0, inv.getField(0));
             }
 
-            if(currentTickMax != tileBase.getField(1)){
-                iListener.sendProgressBarUpdate(this, 1, tileBase.getField(1));
+            if(currentTickMax != inv.getField(1)){
+                iListener.sendProgressBarUpdate(this, 1, inv.getField(1));
             }
         }
 
-        currentTicks = tileBase.getField(0);
-        currentTickMax = tileBase.getField(1);
+        currentTicks = inv.getField(0);
+        currentTickMax = inv.getField(1);
     }
 
 }

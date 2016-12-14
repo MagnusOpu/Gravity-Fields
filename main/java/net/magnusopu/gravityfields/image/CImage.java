@@ -1,6 +1,4 @@
-package net.magnusopu.gravityfields.item;
-
-import net.minecraft.creativetab.CreativeTabs;
+package net.magnusopu.gravityfields.image;
 
 /**
  * Copyright (C) 2016 MagnusOpu.
@@ -20,26 +18,26 @@ import net.minecraft.creativetab.CreativeTabs;
  * Contact me at zacharydsturtz@gmail.com
  */
 
-public class ItemGravityStone extends ItemBase {
+public enum CImage {
+    GRAVITY_STONE(new ImageInfo(false, true, 113, 30, 0, 0, 32, 33)),
+    STRENGTH_TEXT(new ImageInfo(false, true, 14, 45, 32, 0, 91, 9)),
+    RANGE_TEXT(new ImageInfo(false, true, 23, 45, 32, 9, 74, 10));
 
-    /**
-     * ItemGravityStone is a class constructor for all items which could be modifications for a Gravity Field Generator.
-     *
-     * @param name The unlocalized name of the item.
-     */
-    public ItemGravityStone(String name){
-        super(name);
+    private ImageInfo info;
+
+    CImage(ImageInfo info){
+        this.info = info;
     }
 
-    /**
-     * Sets the items's creative tab.
-     *
-     * @param tab The CreativeTab to set the Item's tab to.
-     * @return The item who's tab was set.
-     */
-    @Override
-    public ItemGravityStone setCreativeTab(CreativeTabs tab){
-        super.setCreativeTab(tab);
-        return this;
+    public ImageInfo getInfo(){ return info; }
+
+    public static ImageInfo[] getInfoList(CImage[] infos){
+        if(infos == null)
+            return new ImageInfo[0];
+        ImageInfo[] infoList = new ImageInfo[infos.length];
+        for(int i=0;i<infos.length;i++){
+            infoList[i] = infos[i].getInfo();
+        }
+        return infoList;
     }
 }

@@ -48,12 +48,12 @@ public class IOContainer extends TContainer {
         this.inputSlot = inputIndex;
         this.outputSlot = outputIndex;
 
-        addSlotToContainer(new InputSlot(tileBase, inputIndex, 62, 35, inputItems));
-        addSlotToContainer(new OutputSlot(tileBase, outputIndex, 98, 35));
+        addSlotToContainer(new InputSlot(inv, inputIndex, 62, 35, inputItems));
+        addSlotToContainer(new OutputSlot(inv, outputIndex, 98, 35));
     }
 
     /**
-     * Called when a player shift click's an item in the container's inventory.
+     * Called when a player shift mouseInput's an item in the container's inventory.
      *
      * @param playerIn The player interacting with the inventory.
      * @param slotIndex The slot pos that was shift clicked.
@@ -93,6 +93,17 @@ public class IOContainer extends TContainer {
             }
         }
         return null;
+    }
+
+    /**
+     * Updates the progress bar in the container.
+     *
+     * @param id The id of the field to update.
+     * @param data The value of the field to update.
+     */
+    @Override
+    public void updateProgressBar(int id, int data){
+        inv.setField(id, data);
     }
 
 }

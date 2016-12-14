@@ -27,7 +27,7 @@ import net.minecraft.inventory.Slot;
 
 public class ContainerBase extends Container {
 
-    protected final IInventory tileBase;
+    protected final IInventory inv;
     protected final int sizeInventory;
 
     /**
@@ -39,8 +39,8 @@ public class ContainerBase extends Container {
     public ContainerBase(InventoryPlayer inventoryPlayer, IInventory inventory){
         System.out.println("ContainerBase constructor()");
 
-        tileBase = inventory;
-        sizeInventory = tileBase.getSizeInventory();
+        inv = inventory;
+        sizeInventory = inv.getSizeInventory();
 
         int i;
 
@@ -63,18 +63,7 @@ public class ContainerBase extends Container {
     @Override
     public void addListener(IContainerListener listener){
         super.addListener(listener);
-        listener.sendAllWindowProperties(this, tileBase);
-    }
-
-    /**
-     * Updates the progress bar in the container.
-     *
-     * @param id The id of the field to update.
-     * @param data The value of the field to update.
-     */
-    @Override
-    public void updateProgressBar(int id, int data){
-        tileBase.setField(id, data);
+        listener.sendAllWindowProperties(this, inv);
     }
 
     /**
@@ -85,7 +74,7 @@ public class ContainerBase extends Container {
      */
     @Override
     public boolean canInteractWith(EntityPlayer playerIn){
-        return tileBase.isUseableByPlayer(playerIn);
+        return inv.isUseableByPlayer(playerIn);
     }
 
 }

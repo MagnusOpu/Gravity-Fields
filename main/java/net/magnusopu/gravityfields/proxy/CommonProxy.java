@@ -1,8 +1,10 @@
 package net.magnusopu.gravityfields.proxy;
 
 import net.magnusopu.gravityfields.GravityFields;
+import net.magnusopu.gravityfields.event.GravityFieldsEventHandler;
 import net.magnusopu.gravityfields.gui.GuiHandler;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 /**
@@ -35,10 +37,19 @@ public class CommonProxy {
     public void registerItemRenderer(Item item, int meta, String id){}
 
     /**
-     * Initializing special classes
+     * Initializing special classes and registering other things
      */
     public void init(){
         NetworkRegistry.INSTANCE.registerGuiHandler(GravityFields.instance, new GuiHandler());
+        registerEventListeners();
+    }
+
+    /**
+     * Registers all event listeners for the gravity fields mod
+     */
+    public void registerEventListeners(){
+        System.out.println("Registering event listeners for mod "+GravityFields.name);
+        MinecraftForge.EVENT_BUS.register(new GravityFieldsEventHandler());
     }
 
 }

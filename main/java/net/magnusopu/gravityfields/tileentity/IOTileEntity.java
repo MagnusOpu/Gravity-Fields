@@ -34,7 +34,7 @@ public class IOTileEntity extends TTileEntity {
     protected IOItem[] allowedItems;
 
     /**
-     * IOTileEntity is a class extending TTIleEntity buiilt for the sole purpose of housing a container that will have an inventory with one input slot and one output slot.
+     * IOTileEntity is a class extending TTIleEntity built for the sole purpose of housing a container that will have an inventory with one input slot and one output slot.
      *
      * @param itemStackArray The starting itemstacks in the inventory.
      * @param name The name of the tile entity.
