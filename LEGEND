@@ -7,3 +7,7 @@ GEG     --      Gravity Essence Generator       --      Classes to do with the g
 M       --      Mod                             --      Classes involved in loading classes during pre init and init phases
 
 C       --      Counter                         --      Classes that are part of some sort of single focused counting functionality
+
+GFG     --      Gravity Field Generator         --      Classes to do with the gravity field generator block
+
+I       --      Single Input                    --      Classes that have a single input slot, typically extending a class that ticks

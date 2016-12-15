@@ -1,6 +1,6 @@
 package net.magnusopu.gravityfields.item;
 
-import net.magnusopu.gravityfields.gui.EnumGUI;
+import net.magnusopu.gravityfields.gui.EnumGui;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -35,8 +35,8 @@ public final class MItems {
     public static void init(){
         gravityOre = register(new ItemBase("gravityOre"));
         gravityEssence = register(new ItemBase("gravityEssence"));
-        gravityRangeStone = register(new CItem("gravityRangeStone", EnumGUI.GRAVITY_RANGE_STONE, 20, 10));
-        gravityStrengthStone = register(new CItem("gravityStrengthStone", EnumGUI.GRAVITY_STRENGTH_STONE, 5, 3));
+        gravityRangeStone = register(new CItem("gravityRangeStone", EnumGui.GRAVITY_RANGE_STONE, 20, 10));
+        gravityStrengthStone = register(new CItem("gravityStrengthStone", EnumGui.GRAVITY_STRENGTH_STONE, 5, 3));
     }
 
     /**

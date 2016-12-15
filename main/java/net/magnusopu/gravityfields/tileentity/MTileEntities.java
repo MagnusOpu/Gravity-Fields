@@ -26,7 +26,8 @@ public class MTileEntities {
      * Registers all Tile Entities for the mod Gravity Fields.
      */
     public static void init(){
-        GameRegistry.registerTileEntity(GEGTileEntity.class, "gravityEssenceGenerator");
+        GameRegistry.registerTileEntity(GEGTileEntity.class, "tileEntityGravityEssenceGenerator");
+        GameRegistry.registerTileEntity(GFGTileEntity.class, "tileEntityGravityFieldGenerator");
     }
 
 }

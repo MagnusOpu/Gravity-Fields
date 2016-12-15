@@ -1,5 +1,6 @@
 package net.magnusopu.gravityfields.gui;
 
+import net.magnusopu.gravityfields.image.IImage;
 import net.magnusopu.gravityfields.image.ImageInfo;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -26,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 
 @SideOnly(Side.CLIENT)
-public class IOGui extends GuiBase {
+public class IOGui extends IGui {
 
     /**
      * IOGui is a class that extends GuiBase mainly for showing a GUI that has a single input, performs some action on it then sends that into a single output slot.
@@ -38,7 +39,7 @@ public class IOGui extends GuiBase {
      * @param backgroundImages A list of background ImageInfo(s) to draw during the drawContainerBackgroundLayer() method
      */
     public IOGui(Container container, InventoryPlayer inventoryPlayer, IInventory inv, String name, ImageInfo... backgroundImages){
-        super(container, inventoryPlayer, inv, name, backgroundImages);
+        super(container, inventoryPlayer, inv, name, IImage.ARROW.getInfo(), false, backgroundImages);
     }
 
     /**
@@ -50,33 +51,7 @@ public class IOGui extends GuiBase {
      * @param name The name of the gui resource location.
      */
     public IOGui(Container container, InventoryPlayer inventoryPlayer, IInventory inv, String name){
-        super(container, inventoryPlayer, inv, name, null);
+        super(container, inventoryPlayer, inv, name, IImage.ARROW.getInfo(), false, null);
     }
 
-    /**
-     * Draws the container's background layer.
-     *
-     * @param partialTicks I don't actually know what this does.
-     * @param mouseX The current mouseX pos.
-     * @param mouseY The current mouseY pos.
-     */
-    @Override
-    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
-        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
-
-        int progressLevel = getProgressLevel(18);
-        drawTexturedModalRect(marginHorizontal + 80, marginVertical + 35, xSize, 0, progressLevel, 16);
-    }
-
-    /**
-     * Returns the current progress of whatever action is currently happening.
-     *
-     * @param progressIndicatorPixelWidth The length of the total progress bar.
-     * @return The amount of pixels of the progress bar to show.
-     */
-    private int getProgressLevel(int progressIndicatorPixelWidth){
-        int currentTicks = inv.getField(0);
-        int currentTickMax = inv.getField(1);
-        return currentTickMax != 0 && currentTicks != 0 ? currentTicks*progressIndicatorPixelWidth/currentTickMax : 0;
-    }
 }

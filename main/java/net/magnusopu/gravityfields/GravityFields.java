@@ -3,8 +3,10 @@ package net.magnusopu.gravityfields;
 import net.magnusopu.gravityfields.block.MBlocks;
 import net.magnusopu.gravityfields.client.GravityTab;
 import net.magnusopu.gravityfields.item.MItems;
+import net.magnusopu.gravityfields.player.PlayerGravity;
 import net.magnusopu.gravityfields.proxy.CommonProxy;
 import net.magnusopu.gravityfields.recipe.MRecipes;
+import net.magnusopu.gravityfields.tileentity.GFGTileEntity;
 import net.magnusopu.gravityfields.tileentity.MTileEntities;
 import net.magnusopu.gravityfields.world.ModWorldGenerator;
 import net.minecraftforge.fml.common.Mod;
@@ -13,6 +15,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import java.util.ArrayList;
 
 /**
  * Copyright (C) 2016 MagnusOpu.
@@ -50,6 +54,9 @@ public class GravityFields {
     public static GravityFields instance;
 
     public static final GravityTab gravityTab = new GravityTab();
+
+    public static final ArrayList<GFGTileEntity> gravityFieldGenerators = new ArrayList<GFGTileEntity>();
+    public static final ArrayList<PlayerGravity> playerGravities = new ArrayList<PlayerGravity>();
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){

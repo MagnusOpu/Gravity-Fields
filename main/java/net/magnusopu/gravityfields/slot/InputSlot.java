@@ -27,6 +27,7 @@ import net.minecraft.item.ItemStack;
 public class InputSlot extends Slot {
 
     private Item[] allowedItems;
+    private int limit = 64;
 
     /**
      * InputSlot is a class that extends Slot built for the entire purpose of only allowing a select few items to be placed in it.
@@ -46,6 +47,61 @@ public class InputSlot extends Slot {
     }
 
     /**
+     * InputSlot is a class that extends Slot built for the entire purpose of only allowing a select few items to be placed in it.
+     *
+     * @param inventory The inventory that the slot resides in.
+     * @param slotIndex The index of the slot.
+     * @param xDisplayPos The x position to display the slot at.
+     * @param yDisplayPos The y position to display the slot at.
+     * @param allowedItems The items allowed to be placed in the slot.
+     */
+    public InputSlot(IInventory inventory, int slotIndex, int xDisplayPos, int yDisplayPos, Item... allowedItems){
+        super(inventory, slotIndex, xDisplayPos, yDisplayPos);
+        this.allowedItems = allowedItems;
+        if(allowedItems == null){
+            this.allowedItems = new Item[0];
+        }
+    }
+
+    /**
+     * InputSlot is a class that extends Slot built for the entire purpose of only allowing a select few items to be placed in it.
+     *
+     * @param inventory The inventory that the slot resides in.
+     * @param slotIndex The index of the slot.
+     * @param xDisplayPos The x position to display the slot at.
+     * @param yDisplayPos The y position to display the slot at.
+     * @param allowedItems The items allowed to be placed in the slot.
+     * @param limit The limit of itemstack size allowed in this slot
+     */
+    public InputSlot(IInventory inventory, int slotIndex, int xDisplayPos, int yDisplayPos, int limit, IOItem... allowedItems){
+        super(inventory, slotIndex, xDisplayPos, yDisplayPos);
+        this.allowedItems = new Item[allowedItems.length];
+        for(int i=0;i<allowedItems.length;i++){
+            this.allowedItems[i] = allowedItems[i].getInput();
+        }
+        this.limit = limit;
+    }
+
+    /**
+     * InputSlot is a class that extends Slot built for the entire purpose of only allowing a select few items to be placed in it.
+     *
+     * @param inventory The inventory that the slot resides in.
+     * @param slotIndex The index of the slot.
+     * @param xDisplayPos The x position to display the slot at.
+     * @param yDisplayPos The y position to display the slot at.
+     * @param allowedItems The items allowed to be placed in the slot.
+     * @param limit The limit of itemstack size allowed in this slot
+     */
+    public InputSlot(IInventory inventory, int slotIndex, int xDisplayPos, int yDisplayPos, int limit, Item... allowedItems){
+        super(inventory, slotIndex, xDisplayPos, yDisplayPos);
+        this.allowedItems = allowedItems;
+        if(allowedItems == null){
+            this.allowedItems = new Item[0];
+        }
+        this.limit = limit;
+    }
+
+    /**
      * Overrides isItemValid to make sure only the allowedItems are placed in the slot.
      *
      * @param stack The stack attempting to be placed in the slot.
@@ -60,6 +116,11 @@ public class InputSlot extends Slot {
             }
         }
         return false;
+    }
+
+    @Override
+    public int getSlotStackLimit(){
+        return limit;
     }
 
 

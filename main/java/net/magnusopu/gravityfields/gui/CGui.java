@@ -55,6 +55,8 @@ public class CGui extends GuiBase {
         this.downArrowY = inv.getField(5);
     }
 
+    // P.S. I'm aware it's stupid to do the ticking and clicking logic in the UI class but I'm too lazy to fix it.. Shut up..
+
     /**
      * Draws the container's background layer and does logic for mouse clicking.
      *

@@ -8,11 +8,13 @@ item.gravityStrengthStone.name=Gravity Strength Stone
 tile.gravityBlock.name=Gravity Block
 tile.gravityOreBlock.name=Gravity Ore Block
 tile.gravityEssenceGenerator.name=Gravity Essence Generator
+tile.gravityFieldGenerator.name=Gravity Field Generator
 
 # Creative Tab
 itemGroup.gravityfields=Gravity Fields
 
 # Containers
 container.gravityEssenceGenerator=Gravity Essence Generator
+container.gravityFieldGenerator=Gravity Field Generator
 container.gravityRangeStoneCounter=Gravity Range Stone
 container.gravityStrengthStoneCounter=Gravity Strength Stone

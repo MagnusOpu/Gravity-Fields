@@ -331,7 +331,8 @@ public class TileEntityBase extends TileEntityLockable implements ITickable, ISi
      */
     @Override
     public int[] getSlotsForFace(EnumFacing side) {
-        return new int[0];
+        int[] a = {0};
+        return a;
     }
 
     /**

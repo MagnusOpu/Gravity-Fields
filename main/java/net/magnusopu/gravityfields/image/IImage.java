@@ -18,18 +18,19 @@ package net.magnusopu.gravityfields.image;
  * Contact me at zacharydsturtz@gmail.com
  */
 
-public enum CImage {
-    GRAVITY_STONE(new ImageInfo(false, true, 113, 30, 0, 0, 32, 33)),
-    STRENGTH_TEXT(new ImageInfo(false, true, 14, 44, 32, 0, 91, 10)),
-    RANGE_TEXT(new ImageInfo(false, true, 23, 45, 32, 10, 79, 10));
+public enum IImage {
+    ARROW(new ImageInfo(true, false, 80, 35, 0, 0, 18, 16)),
+    BAR(new ImageInfo(false, true, 26, 61, 0, 0, 126, 5)),
+    STONE_1(new ImageInfo(true, false, 37, 47, 0, 0, 27, 7)),
+    STONE_2(new ImageInfo(true, false, 109, 47, 0, 0, 27, 7));
 
     private ImageInfo info;
 
     /**
-     * CImage is a basic enum that holds a list of all ImageInfos applicable to CGui classes
+     * IImage is a basic enum that holds a list of all ImageInfos applicable to IGui classes
      * @param info An ImageInfo that's applicable to IGui classes
      */
-    CImage(ImageInfo info){
+    IImage(ImageInfo info){
         this.info = info;
     }
 
@@ -37,12 +38,14 @@ public enum CImage {
      * Getter for info
      * @return info
      */
-    public ImageInfo getInfo(){ return info; }
+    public ImageInfo getInfo(){
+        return info;
+    }
 
     /**
-     * Converts a list of CImage[] into their respective infos
-     * @param infos The list of CImage[] to convert
-     * @return The CImage[] converted into ImageInfo[]
+     * Converts a list of IImage[] into their respective infos
+     * @param infos The list of IImage[] to convert
+     * @return The IImage[] converted into ImageInfo[]
      */
     public static ImageInfo[] getInfoList(CImage[] infos){
         if(infos == null)

@@ -48,6 +48,7 @@ public class CInventory extends InventoryBase {
             this.limit = master.getTagCompound().getInteger("limit");
             this.currentCount = master.getTagCompound().getInteger("count");
         } else {
+            System.out.println("Setting compound in CInventory");
             master.setTagCompound(new NBTTagCompound());
             CItem masterItem = (CItem)master.getItem();
             master.getTagCompound().setInteger("limit", masterItem.getLimit());

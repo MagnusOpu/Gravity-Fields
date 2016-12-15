@@ -6,8 +6,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 
 /**
  * Copyright (C) 2016 MagnusOpu.
@@ -27,14 +25,12 @@ import net.minecraft.nbt.NBTTagList;
  * Contact me at zacharydsturtz@gmail.com
  */
 
-public class IOTileEntity extends TTileEntity {
+public class IOTileEntity extends ITileEntity {
 
-    protected int inputSlot = 0;
     protected int outputSlot = 1;
-    protected IOItem[] allowedItems;
 
     /**
-     * IOTileEntity is a class extending TTIleEntity built for the sole purpose of housing a container that will have an inventory with one input slot and one output slot.
+     * IOTileEntity is a class extending ITileEntity built for the sole purpose of housing a container that will have an inventory with one input slot and one output slot.
      *
      * @param itemStackArray The starting itemstacks in the inventory.
      * @param name The name of the tile entity.
@@ -44,73 +40,10 @@ public class IOTileEntity extends TTileEntity {
      * @param allowedItems The allowedItems in the input/output slots.
      */
     public IOTileEntity(ItemStack[] itemStackArray, String name, int inputSlot, int outputSlot, String guiID, IOItem... allowedItems){
-        super(itemStackArray, name, guiID);
-        if(inputSlot < itemStackArray.length){
-            this.inputSlot = inputSlot;
+        super(itemStackArray, name, inputSlot, guiID, allowedItems);
+        if(outputSlot < itemStackArray.length){
             this.outputSlot = outputSlot;
         }
-        this.allowedItems = allowedItems;
-    }
-
-    /**
-     * Adds special parameters to the NBTTagList when something attempts to read it.
-     *
-     * @param compound The nbt tag contents.
-     */
-    @Override
-    public void readFromNBT(NBTTagCompound compound){
-        super.readFromNBT(compound);
-
-        NBTTagList nbtTagList = compound.getTagList("Items", 10);
-        itemStackArray = new ItemStack[getSizeInventory()];
-
-        for(int i=0;i<nbtTagList.tagCount();++i){
-            NBTTagCompound nbtTagCompound = nbtTagList.getCompoundTagAt(i);
-            byte b0 = nbtTagCompound.getByte("Slot");
-
-            if(b0 >= 0 && b0 < itemStackArray.length){
-                itemStackArray[b0] = ItemStack.loadItemStackFromNBT(nbtTagCompound);
-            }
-        }
-
-        currentTicks = compound.getShort("CookTime");
-        currentTickMax = compound.getShort("CookTimeTotal");
-
-        if(compound.hasKey("CustomName", 8)){
-            name = compound.getString("CustomName");
-        }
-
-    }
-
-    /**
-     * Adds special parameters to the NBTTagList when something attempts to write to it.
-     *
-     * @param compound The nbt tag contents.
-     */
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound compound){
-        super.writeToNBT(compound);
-
-        compound.setShort("CookTime", (short)currentTicks);
-        compound.setShort("CookTimeTotal", (short)currentTickMax);
-        NBTTagList nbtTagList = new NBTTagList();
-
-        for(int i=0;i<itemStackArray.length;i++){
-            if(itemStackArray[i] != null){
-                NBTTagCompound nbtTagCompound = new NBTTagCompound();
-                nbtTagCompound.setByte("Slot", (byte)i);
-                itemStackArray[i].writeToNBT(nbtTagCompound);
-                nbtTagList.appendTag(nbtTagCompound);
-            }
-        }
-
-        compound.setTag("Items", nbtTagList);
-
-        if(hasCustomName()){
-            compound.setString("CustomName", name);
-        }
-
-        return compound;
     }
 
     /**
@@ -122,7 +55,7 @@ public class IOTileEntity extends TTileEntity {
      */
     @Override
     public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn){
-        System.out.println("IOEntityBase createContainer()");
+        System.out.println("IOTileEntity createContainer()");
         return new IOContainer(playerInventory, this, inputSlot, outputSlot, allowedItems);
     }
 
@@ -181,24 +114,6 @@ public class IOTileEntity extends TTileEntity {
                 currentTickMax = 0;
             }
         }
-    }
-
-    /**
-     * Getter for allowedItems.
-     *
-     * @return allowedItems
-     */
-    public IOItem[] getAllowedItems() {
-        return allowedItems;
-    }
-
-    /**
-     * Getter for inputSlot.
-     *
-     * @return inputSlot.
-     */
-    public int getInputSlot(){
-        return inputSlot;
     }
 
     /**

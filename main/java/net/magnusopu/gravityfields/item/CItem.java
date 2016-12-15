@@ -1,7 +1,7 @@
 package net.magnusopu.gravityfields.item;
 
 import net.magnusopu.gravityfields.GravityFields;
-import net.magnusopu.gravityfields.gui.EnumGUI;
+import net.magnusopu.gravityfields.gui.EnumGui;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -30,7 +30,7 @@ import net.minecraft.world.World;
 
 public class CItem extends ItemBase {
 
-    protected EnumGUI gui;
+    protected EnumGui gui;
     protected int limit;
     protected int currentCount;
 
@@ -39,7 +39,7 @@ public class CItem extends ItemBase {
      *
      * @param name The unlocalized name of the item.
      */
-    public CItem(String name, EnumGUI gui, int limit){
+    public CItem(String name, EnumGui gui, int limit){
         super(name);
         this.gui = gui;
         this.limit = limit;
@@ -50,7 +50,7 @@ public class CItem extends ItemBase {
      *
      * @param name The unlocalized name of the item.
      */
-    public CItem(String name, EnumGUI gui, int limit, int startCount){
+    public CItem(String name, EnumGui gui, int limit, int startCount){
         super(name);
         this.gui = gui;
         this.limit = limit;

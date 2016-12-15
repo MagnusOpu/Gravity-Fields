@@ -37,8 +37,6 @@ public class ContainerBase extends Container {
      * @param inventory The inventory of the container.
      */
     public ContainerBase(InventoryPlayer inventoryPlayer, IInventory inventory){
-        System.out.println("ContainerBase constructor()");
-
         inv = inventory;
         sizeInventory = inv.getSizeInventory();
 
@@ -77,4 +75,12 @@ public class ContainerBase extends Container {
         return inv.isUseableByPlayer(playerIn);
     }
 
+    /**
+     * Getter for inventory
+     *
+     * @return inv
+     */
+    public IInventory getInv() {
+        return inv;
+    }
 }

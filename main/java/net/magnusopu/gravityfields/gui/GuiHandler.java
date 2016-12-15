@@ -1,13 +1,14 @@
 package net.magnusopu.gravityfields.gui;
 
 import net.magnusopu.gravityfields.container.ContainerBase;
+import net.magnusopu.gravityfields.container.GFGContainer;
 import net.magnusopu.gravityfields.container.IOContainer;
 import net.magnusopu.gravityfields.image.CImage;
 import net.magnusopu.gravityfields.inventory.CInventory;
 import net.magnusopu.gravityfields.item.IOItemConfig;
 import net.magnusopu.gravityfields.item.MItems;
 import net.magnusopu.gravityfields.tileentity.GEGTileEntity;
-import net.magnusopu.gravityfields.tileentity.TileEntityBase;
+import net.magnusopu.gravityfields.tileentity.GFGTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -47,28 +48,33 @@ public class GuiHandler implements IGuiHandler {
      * @return A container dependent on the ID input
      */
     @Override
-    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z){
-        TileEntity tileEntity = world.getTileEntity(new BlockPos(x,y,z));
+    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
 
-        if(ID == EnumGUI.GRAVITY_GENERATOR.ordinal()){
-            if(tileEntity != null){
-                GEGTileEntity tileEntityG = (GEGTileEntity)tileEntity;
+        if (ID == EnumGui.GRAVITY_GENERATOR.ordinal()){
+            if (tileEntity != null){
+                GEGTileEntity tileEntityG = (GEGTileEntity) tileEntity;
                 return new IOContainer(player.inventory, tileEntityG, tileEntityG.getInputSlot(), tileEntityG.getOutputSlot(), IOItemConfig.GRAVITY_ORE_TO_ESSENCE.getConfig());
             }
-        } else if(ID == EnumGUI.GRAVITY_RANGE_STONE.ordinal()){
+        } else if(ID == EnumGui.GRAVITY_FIELD_GENERATOR.ordinal()){
+            if(tileEntity != null){
+                GFGTileEntity tileEntityG = (GFGTileEntity) tileEntity;
+                return new GFGContainer(player.inventory, tileEntityG);
+            }
+        } else if(ID == EnumGui.GRAVITY_RANGE_STONE.ordinal()){
             if(player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() == MItems.gravityRangeStone) {
-                CInventory inv = new CInventory(new ItemStack[2], "gravityRangeStoneCounter", player.getHeldItemMainhand());
+                CInventory inv = new CInventory(new ItemStack[0], "gravityRangeStoneCounter", player.getHeldItemMainhand());
                 return new ContainerBase(player.inventory, inv);
             } else if(player.getHeldItemOffhand() != null && player.getHeldItemOffhand().getItem() == MItems.gravityRangeStone) {
-                CInventory inv = new CInventory(new ItemStack[2], "gravityRangeStoneCounter", player.getHeldItemOffhand());
+                CInventory inv = new CInventory(new ItemStack[0], "gravityRangeStoneCounter", player.getHeldItemOffhand());
                 return new ContainerBase(player.inventory, inv);
             }
-        } else if(ID == EnumGUI.GRAVITY_STRENGTH_STONE.ordinal()){
+        } else if(ID == EnumGui.GRAVITY_STRENGTH_STONE.ordinal()){
             if(player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() == MItems.gravityStrengthStone) {
-                CInventory inv = new CInventory(new ItemStack[2], "gravityStrengthStoneCounter", player.getHeldItemMainhand());
+                CInventory inv = new CInventory(new ItemStack[0], "gravityStrengthStoneCounter", player.getHeldItemMainhand());
                 return new ContainerBase(player.inventory, inv);
             } else if(player.getHeldItemOffhand() != null && player.getHeldItemOffhand().getItem() == MItems.gravityStrengthStone) {
-                CInventory inv = new CInventory(new ItemStack[2], "gravityStrengthStoneCounter", player.getHeldItemOffhand());
+                CInventory inv = new CInventory(new ItemStack[0], "gravityStrengthStoneCounter", player.getHeldItemOffhand());
                 return new ContainerBase(player.inventory, inv);
             }
         }
@@ -90,16 +96,21 @@ public class GuiHandler implements IGuiHandler {
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z){
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x,y,z));
-        if (ID == EnumGUI.GRAVITY_GENERATOR.ordinal()) {
+        if (ID == EnumGui.GRAVITY_GENERATOR.ordinal()) {
             if(tileEntity != null){
-                if(tileEntity instanceof TileEntityBase) {
-                        if(tileEntity instanceof GEGTileEntity){
-                            GEGTileEntity tileEntityG = (GEGTileEntity)tileEntity;
-                            return new IOGui(new IOContainer(player.inventory, tileEntityG, tileEntityG.getInputSlot(), tileEntityG.getOutputSlot(), IOItemConfig.GRAVITY_ORE_TO_ESSENCE.getConfig()), player.inventory, tileEntityG, tileEntityG.getGuiIDUnlocalized());
-                        }
+                if(tileEntity instanceof GEGTileEntity) {
+                    GEGTileEntity tileEntityG = (GEGTileEntity)tileEntity;
+                    return new IOGui(new IOContainer(player.inventory, tileEntityG, tileEntityG.getInputSlot(), tileEntityG.getOutputSlot(), IOItemConfig.GRAVITY_ORE_TO_ESSENCE.getConfig()), player.inventory, tileEntityG, tileEntityG.getGuiIDUnlocalized());
                 }
             }
-        } else if(ID == EnumGUI.GRAVITY_RANGE_STONE.ordinal()){
+        } else if (ID == EnumGui.GRAVITY_FIELD_GENERATOR.ordinal()) {
+            if(tileEntity != null){
+                if(tileEntity instanceof GFGTileEntity) {
+                    GFGTileEntity tileEntityG = (GFGTileEntity)tileEntity;
+                    return new GFGGui(new GFGContainer(player.inventory, tileEntityG), player.inventory, tileEntityG, tileEntityG.getGuiIDUnlocalized());
+                }
+            }
+        } else if(ID == EnumGui.GRAVITY_RANGE_STONE.ordinal()){
             if(player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() == MItems.gravityRangeStone) {
                 CInventory inv = new CInventory(new ItemStack[2], "gravityRangeStoneCounter", player.getHeldItemMainhand());
                 return new CGui(new ContainerBase(player.inventory, inv), player.inventory, inv, CImage.GRAVITY_STONE.getInfo(), CImage.RANGE_TEXT.getInfo());
@@ -107,7 +118,7 @@ public class GuiHandler implements IGuiHandler {
                 CInventory inv = new CInventory(new ItemStack[2], "gravityRangeStoneCounter", player.getHeldItemOffhand());
                 return new CGui(new ContainerBase(player.inventory, inv), player.inventory, inv, CImage.GRAVITY_STONE.getInfo(), CImage.RANGE_TEXT.getInfo());
             }
-        } else if(ID == EnumGUI.GRAVITY_STRENGTH_STONE.ordinal()){
+        } else if(ID == EnumGui.GRAVITY_STRENGTH_STONE.ordinal()){
             if(player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() == MItems.gravityStrengthStone) {
                 CInventory inv = new CInventory(new ItemStack[2], "gravityStrengthStoneCounter", player.getHeldItemMainhand());
                 return new CGui(new ContainerBase(player.inventory, inv), player.inventory, inv, CImage.GRAVITY_STONE.getInfo(), CImage.STRENGTH_TEXT.getInfo());

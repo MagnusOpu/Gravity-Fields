@@ -183,10 +183,10 @@ public class Machine extends BlockContainer {
      */
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state){
-        if(!hasTileEntity){
-            TileEntity tileEntity = worldIn.getTileEntity(pos);
-            if(tileEntity instanceof TileEntityBase){
-                InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityBase)tileEntity);
+        TileEntity tileEntity = worldIn.getTileEntity(pos);
+        if(tileEntity != null) {
+            if (tileEntity instanceof TileEntityBase) {
+                InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityBase) tileEntity);
                 worldIn.updateComparatorOutputLevel(pos, this);
             }
         }

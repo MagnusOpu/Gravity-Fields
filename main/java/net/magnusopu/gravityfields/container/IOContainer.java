@@ -3,13 +3,8 @@ package net.magnusopu.gravityfields.container;
 import net.magnusopu.gravityfields.item.IOItem;
 import net.magnusopu.gravityfields.slot.InputSlot;
 import net.magnusopu.gravityfields.slot.OutputSlot;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemStack;
-
-import java.util.ArrayList;
 
 /**
  * Copyright (C) 2016 MagnusOpu.
@@ -29,7 +24,7 @@ import java.util.ArrayList;
  * Contact me at zacharydsturtz@gmail.com
  */
 
-public class IOContainer extends TContainer {
+public class IOContainer extends IContainer {
 
     protected int inputSlot;
     protected int outputSlot;
@@ -44,66 +39,12 @@ public class IOContainer extends TContainer {
      * @param inputItems The items valid for input and their corresponding output.
      */
     public IOContainer(InventoryPlayer inventoryPlayer, IInventory inventory, int inputIndex, int outputIndex, IOItem... inputItems){
-        super(inventoryPlayer, inventory);
+        super(inventoryPlayer, inventory, inputIndex, false, inputItems);
         this.inputSlot = inputIndex;
         this.outputSlot = outputIndex;
 
         addSlotToContainer(new InputSlot(inv, inputIndex, 62, 35, inputItems));
         addSlotToContainer(new OutputSlot(inv, outputIndex, 98, 35));
-    }
-
-    /**
-     * Called when a player shift click's an item in the container's inventory.
-     *
-     * @param playerIn The player interacting with the inventory.
-     * @param slotIndex The slot pos that was shift clicked.
-     * @return null
-     */
-    @Override
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int slotIndex){
-        Slot slot = inventorySlots.get(slotIndex);
-        Slot firstEmptySlot = null;
-        ItemStack stack1 = null;
-        ArrayList<ItemStack> stack2 = new ArrayList<ItemStack>();
-        boolean itemAlreadyExists = false;
-
-        if(slot != null && slot.getHasStack()){
-            stack1 = slot.getStack();
-
-            for(int i=0;i<getInventory().size();i++){
-                ItemStack s = getInventory().get(i);
-                if(s != null) {
-                    if (s.getItem() == stack1.getItem()) {
-                        stack2.add(s);
-                        itemAlreadyExists = true;
-                    }
-                } else {
-                    if(firstEmptySlot == null){
-                        firstEmptySlot = inventorySlots.get(i);
-                    }
-                }
-            }
-
-            if(itemAlreadyExists){
-                slot.putStack(null);
-                mergeItemStack(stack1, sizeInventory, sizeInventory+36, false);
-            } else if(firstEmptySlot != null){
-                slot.putStack(null);
-                firstEmptySlot.putStack(stack1);
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Updates the progress bar in the container.
-     *
-     * @param id The id of the field to update.
-     * @param data The value of the field to update.
-     */
-    @Override
-    public void updateProgressBar(int id, int data){
-        inv.setField(id, data);
     }
 
 }

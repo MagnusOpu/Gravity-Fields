@@ -19,12 +19,13 @@ package net.magnusopu.gravityfields.item;
  */
 
 public enum IOItemConfig {
-    GRAVITY_ORE_TO_ESSENCE(new IOItem(MItems.gravityOre, MItems.gravityEssence, 150));
+    GRAVITY_ORE_TO_ESSENCE(new IOItem(MItems.gravityOre, MItems.gravityEssence, 150)),
+    GRAVITY_ORE_TO_GRAVITY(new IOItem(MItems.gravityEssence, null, 1200));
 
     private IOItem config;
 
     /**
-     * A nice wrapper referencing IOItem configurations so I don't have to constalty write new IOItem()
+     * A nice wrapper referencing IOItem configurations so I don't have to constantly write new IOItem()
      *
      * @param config The IOItem config in question
      */

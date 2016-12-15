@@ -28,6 +28,7 @@ public class TTileEntity extends TileEntityBase {
     protected int currentTickMax = 0;
     protected int currentTicks = 0;
     private boolean isTicking = false;
+    protected boolean stateChanged = false;
 
     /**
      * TTileEntity is a class that adds ticking functionality and extends TileEntityBase
@@ -45,7 +46,7 @@ public class TTileEntity extends TileEntityBase {
      */
     @Override
     public void update(){
-        boolean stateChanged = false;
+        stateChanged = false;
 
         if(currentTicks < currentTickMax){
             currentTicks++;
